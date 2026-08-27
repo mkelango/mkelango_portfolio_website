@@ -142,7 +142,7 @@ module.exports = function program(p) {
         <h2 class="d2" style="margin-top:1rem">Start with what you already hold.</h2>
         <p class="lede lede--wide mt-sm">There is no application fee and no discovery call script. Four questions, honestly answered, tell me whether this is the right altitude — and I will say so if it is not.</p>
 
-        <form class="f-grid mt-lg" data-form="program-${p.slug}">
+        <form class="f-grid mt-lg" data-form="program" data-ref="${p.slug}">
           <div class="grid g-2" style="gap:1.05rem">
             <div class="f"><label for="n-${p.slug}">Name</label><input id="n-${p.slug}" name="name" autocomplete="name" required placeholder="Your name"></div>
             <div class="f"><label for="e-${p.slug}">Email</label><input id="e-${p.slug}" name="email" type="email" autocomplete="email" required placeholder="you@company.com"></div>
@@ -168,6 +168,7 @@ module.exports = function program(p) {
             <button class="btn btn--brass btn--lg" type="submit">${p.cta}</button>
             <span class="xs faint">Replies within five working days, including the ones that say no.</span>
           </div>
+        ${K.honeypot()}
         </form>
       </div>
 

@@ -56,9 +56,10 @@ module.exports = function ideasIndex() {
   <div class="wrap">
     <div class="tc rv" style="max-width:44rem;margin-inline:auto">
       <p class="pull">One mechanism, explained well enough to <em>use on Monday.</em></p>
-      <form class="sub jc mt-lg" data-form="ideas-newsletter" style="max-width:30rem;margin-inline:auto">
+      <form class="sub jc mt-lg" data-form="subscribe" data-ref="ideas" style="max-width:30rem;margin-inline:auto">
         <input type="email" name="email" autocomplete="email" required placeholder="you@company.com" aria-label="Email address">
         <button class="btn btn--brass" type="submit">Get it on Tuesdays</button>
+      ${K.honeypot()}
       </form>
       <p class="xs faint mt-sm">${site.lines.reject}</p>
     </div>

@@ -62,11 +62,12 @@ module.exports = function event(e) {
         </div>
         <div class="mark-box" style="background:var(--surface)">
           <span class="kicker">Register</span>
-          <form class="f-grid" style="margin-top:.9rem" data-form="event-${e.slug}">
+          <form class="f-grid" style="margin-top:.9rem" data-form="event" data-ref="${e.slug}">
             <div class="f"><label for="rn-${e.slug}">Name</label><input id="rn-${e.slug}" name="name" autocomplete="name" required placeholder="Your name"></div>
             <div class="f"><label for="re-${e.slug}">Email</label><input id="re-${e.slug}" name="email" type="email" autocomplete="email" required placeholder="you@company.com"></div>
             <div class="f"><label for="ro-${e.slug}">Organisation</label><input id="ro-${e.slug}" name="organization" autocomplete="organization" placeholder="Group or company"></div>
             <button class="btn btn--brass btn--block" type="submit">${e.seats.open ? 'Request a seat' : 'Join the waiting list'}</button>
+          ${K.honeypot()}
           </form>
           <div class="mark-box__cap">${e.price === 'By invitation' ? 'Invitation only. Requests are read, and answered either way.' : 'Payment is taken after the seat is confirmed, never before.'}</div>
         </div>

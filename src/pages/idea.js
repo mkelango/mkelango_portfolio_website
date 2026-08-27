@@ -52,9 +52,10 @@ module.exports = function idea(i) {
         <div class="mark-box" style="background:var(--surface)">
           <span class="kicker">The Inevitable, weekly</span>
           <p class="sm mute" style="margin-top:.6rem">One structural idea, every Tuesday.</p>
-          <form class="sub" style="margin-top:.9rem" data-form="idea-${i.slug}">
+          <form class="sub" style="margin-top:.9rem" data-form="subscribe" data-ref="idea-${i.slug}">
             <input type="email" name="email" autocomplete="email" required placeholder="you@company.com" aria-label="Email address">
             <button class="btn btn--brass btn--sm btn--block" type="submit">Subscribe</button>
+          ${K.honeypot()}
           </form>
         </div>
       </aside>

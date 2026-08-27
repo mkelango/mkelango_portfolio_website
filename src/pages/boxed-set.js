@@ -65,9 +65,10 @@ module.exports = function boxedSet() {
           <p class="price" style="margin-top:.7rem">₹4,800</p>
           <p class="sm mute" style="margin-top:.5rem">Five books, slipcase, Ladder canvas, Coherence Matrix pad. Sixth book on publication.</p>
           <div style="margin-top:1rem">${K.fields([['Ships', 'India · 5–7 days'], ['International', 'On request'], ['Signed', 'On request, no charge']])}</div>
-          <form class="sub" style="margin-top:1.1rem" data-form="boxed-set">
+          <form class="sub" style="margin-top:1.1rem" data-form="boxed-set" data-ref="the-stack">
             <input type="email" name="email" autocomplete="email" required placeholder="you@company.com" aria-label="Email address">
             <button class="btn btn--brass btn--sm btn--block" type="submit">Notify me when it ships</button>
+          ${K.honeypot()}
           </form>
           <div class="mark-box__cap">Payments are not yet connected — Razorpay and Stripe need wiring before launch. This form records interest only.</div>
         </div>

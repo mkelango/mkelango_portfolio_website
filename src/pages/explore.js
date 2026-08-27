@@ -79,9 +79,10 @@ module.exports = function explore() {
     <div class="tc rv" style="max-width:44rem;margin-inline:auto">
       ${K.kicker('The newsletter', 'kicker--plain')}
       <h2 class="d2" style="margin-top:1rem">The Inevitable — one structural idea, every Tuesday.</h2>
-      <form class="sub jc mt" data-form="explore-newsletter" style="max-width:30rem;margin-inline:auto">
+      <form class="sub jc mt" data-form="subscribe" data-ref="explore" style="max-width:30rem;margin-inline:auto">
         <input type="email" name="email" autocomplete="email" required placeholder="you@company.com" aria-label="Email address">
         <button class="btn btn--solid" type="submit">Subscribe</button>
+      ${K.honeypot()}
       </form>
       <p class="xs faint mt-sm">${site.lines.reject}</p>
     </div>

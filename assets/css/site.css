@@ -1288,3 +1288,10 @@ a.sr:focus, a.sr:focus-visible {
 /* The injected answer band sits snug under the hero — it reads as part of it. */
 .aeo { padding-top: 0; padding-bottom: clamp(2.5rem, 5vw, 4rem); }
 .aeo .answer-block { max-width: 68ch; }
+
+/* Honeypot — off-screen rather than display:none, which some bots detect. */
+.hp-field {
+  position: absolute !important;
+  left: -9999px; top: auto; width: 1px; height: 1px;
+  overflow: hidden; opacity: 0; pointer-events: none;
+}

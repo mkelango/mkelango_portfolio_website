@@ -67,9 +67,10 @@ module.exports = function show() {
     <div class="tc rv" style="max-width:44rem;margin-inline:auto">
       <p class="pull">Show me your portfolio and I’ll show you <em>what it’s actually optimising for.</em></p>
       <p class="lede mx-auto mt-lg" style="max-width:42ch">New episodes are announced in the newsletter first.</p>
-      <form class="sub jc mt" data-form="show-newsletter" style="max-width:30rem;margin-inline:auto">
+      <form class="sub jc mt" data-form="subscribe" data-ref="show" style="max-width:30rem;margin-inline:auto">
         <input type="email" name="email" autocomplete="email" required placeholder="you@company.com" aria-label="Email address">
         <button class="btn btn--brass" type="submit">Subscribe</button>
+      ${K.honeypot()}
       </form>
     </div>
   </div>

@@ -1,8 +1,9 @@
 /* The shell — head, header, drawer, footer. Rendered identically on every page. */
 
 const { site, nav, footerCols } = require('./data/site');
-const { icon, esc, btn, kicker } = require('./kit');
+const { icon, esc, btn, kicker, honeypot } = require('./kit');
 const SEO = require('./seo');
+const { backend } = require('./data/backend');
 const K = require('./kit');
 
 /* --------------------------------------------------------------- AEO WIRING */
@@ -131,9 +132,10 @@ function footer() {
         <div style="margin-top:2rem">
           <h2 class="ftr-h">The Inevitable, weekly</h2>
           <p class="sm mute" style="max-width:34ch;margin-bottom:.9rem">One structural idea, every Tuesday. No motivation. No news roundup.</p>
-          <form class="sub" data-form="footer-newsletter">
+          <form class="sub" data-form="subscribe" data-ref="footer">
             <input type="email" name="email" autocomplete="email" required placeholder="you@company.com" aria-label="Email address">
             <button class="btn btn--brass btn--sm" type="submit">Subscribe</button>
+          ${honeypot()}
           </form>
         </div>
       </div>
@@ -255,7 +257,7 @@ ${articleMeta ? `<meta property="article:published_time" content="${articleMeta.
 
 ${SEO.jsonLd(graph)}
 </head>
-<body class="${bodyClass}">
+<body class="${bodyClass}" data-sb-url="${backend.enabled ? backend.url : ''}" data-sb-key="${backend.enabled ? backend.anonKey : ''}">
 <a href="#main" class="sr">Skip to content</a>
 ${header(path)}
 <main id="main">

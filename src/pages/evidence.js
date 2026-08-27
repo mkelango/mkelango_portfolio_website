@@ -81,7 +81,7 @@ module.exports = function evidence() {
           ].map(([n, t, d]) => K.lrow({ n, title: t, desc: d })).join('')}
         </div>
 
-        <form class="f-grid mt-lg" data-form="correction">
+        <form class="f-grid mt-lg" data-form="correction" data-ref="evidence">
           <div class="f"><label for="ce">Your email</label><input id="ce" name="email" type="email" autocomplete="email" required placeholder="you@company.com"></div>
           <div class="f"><label for="cf">Which figure, and where you saw it</label><input id="cf" required placeholder="e.g. the AQ benchmark of 27, on /diagnostics/aq-score/"></div>
           <div class="f"><label for="cw">What is wrong with it, and your source</label><textarea id="cw" required></textarea></div>
@@ -89,6 +89,7 @@ module.exports = function evidence() {
             <button class="btn btn--brass" type="submit">Submit a correction</button>
             <span class="xs faint">Answered within ten working days, and logged either way.</span>
           </div>
+        ${K.honeypot()}
         </form>
       </div>
     </div>

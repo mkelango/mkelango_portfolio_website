@@ -30,7 +30,7 @@ module.exports = function contact() {
   <div class="wrap wrap--wide">
     <div class="artgrid">
       <div class="rv">
-        <form class="f-grid" data-form="contact">
+        <form class="f-grid" data-form="contact" data-ref="contact">
           <div class="grid g-2" style="gap:1.05rem">
             <div class="f"><label for="cname">Name</label><input id="cname" name="name" autocomplete="name" required placeholder="Your name"></div>
             <div class="f"><label for="cmail">Email</label><input id="cmail" name="email" type="email" autocomplete="email" required placeholder="you@company.com"></div>
@@ -78,6 +78,7 @@ module.exports = function contact() {
             <button class="btn btn--brass btn--lg" type="submit">Send</button>
             <span class="xs faint">Answered within five working days.</span>
           </div>
+        ${K.honeypot()}
         </form>
       </div>
 

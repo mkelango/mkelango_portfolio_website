@@ -58,6 +58,16 @@ const tlink = (label, href, attrs = '') =>
 
 const rule = (cls = '') => `<hr class="rule ${cls}">`;
 
+/** A honeypot. Invisible and unreachable by keyboard; only a bot fills it.
+    The database rejects any row where it is non-empty. */
+let hpN = 0;
+const honeypot = () => {
+  const id = 'hp-' + (++hpN);
+  return '<div class="hp-field" aria-hidden="true">' +
+    `<label for="${id}">Leave this field empty</label>` +
+    `<input type="text" name="hp" id="${id}" tabindex="-1" autocomplete="off"></div>`;
+};
+
 /** A machine-readable date. Display text stays human; the attribute is ISO. */
 const time = (display, iso, cls = '') =>
   `<time${cls ? ` class="${cls}"` : ''}${iso ? ` datetime="${iso}"` : ''}>${display}</time>`;
@@ -422,7 +432,7 @@ function portraitSlot(label = 'ONE PORTRAIT') {
 
 module.exports = {
   icon, esc, etag, figure, kicker, btn, tlink, rule, shead, crumb,
-  field, fields, seats, lrow, card, railX, stackLadder, cover, headLines, time,
+  field, fields, seats, lrow, card, railX, stackLadder, cover, headLines, time, honeypot,
   answerBlock, faqSection, factTable,
   flywheelMark, layersMark, missionMark, traitsMark, cciMark, portraitSlot, GRADE_DEF
 };

@@ -88,7 +88,7 @@ module.exports = function coach(c) {
           ${c.apply.map((a, i) => K.lrow({ n: String(i + 1).padStart(2, '0'), title: a })).join('')}
         </div>
 
-        <form class="f-grid mt-lg" data-form="coaching-${c.slug}">
+        <form class="f-grid mt-lg" data-form="coaching" data-ref="${c.slug}">
           <div class="grid g-2" style="gap:1.05rem">
             <div class="f"><label for="cn-${c.slug}">Name</label><input id="cn-${c.slug}" name="name" autocomplete="name" required placeholder="Your name"></div>
             <div class="f"><label for="ce-${c.slug}">Email</label><input id="ce-${c.slug}" name="email" type="email" autocomplete="email" required placeholder="you@company.com"></div>
@@ -109,6 +109,7 @@ module.exports = function coach(c) {
             <button class="btn btn--brass btn--lg" type="submit">Submit an application</button>
             <span class="xs faint">Every application is read and answered, including the declines.</span>
           </div>
+        ${K.honeypot()}
         </form>
       </div>
 

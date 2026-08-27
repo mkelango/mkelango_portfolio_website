@@ -291,9 +291,10 @@ module.exports = function home() {
       <p class="lede mx-auto" style="margin-top:1.25rem;max-width:44ch">
         No motivation. No news roundup. One mechanism, explained well enough to use on Monday.
       </p>
-      <form class="sub jc mt" data-form="home-newsletter" style="max-width:30rem;margin-inline:auto">
+      <form class="sub jc mt" data-form="subscribe" data-ref="home" style="max-width:30rem;margin-inline:auto">
         <input type="email" name="email" autocomplete="email" required placeholder="you@company.com" aria-label="Email address">
         <button class="btn btn--brass" type="submit">Subscribe</button>
+      ${K.honeypot()}
       </form>
       <p class="xs faint mt-sm">One email a week. Unsubscribe in one click. The list is never sold or shared.</p>
     </div>

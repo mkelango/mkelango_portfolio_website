@@ -116,6 +116,33 @@ visibly marked slot rather than filled with invented text.
 
 ---
 
+## Forms and data
+
+Form submissions go to **Supabase**. The site is static, so the browser writes straight to
+PostgREST with the public anon key, and the whole security model lives in
+[`supabase/schema.sql`](supabase/schema.sql): `anon` may `INSERT` into three tables on named
+columns only, and may not read anything back.
+
+| Table | What it holds |
+|---|---|
+| `subscribers` | the newsletter list, deduplicated on lowercased email |
+| `submissions` | contact, programme and coaching applications, event requests, corrections — one `kind` column, answers in `payload` keyed by their own question |
+| `diagnostic_runs` | a completed instrument, **only when the detailed report is requested** |
+
+That last restraint is deliberate: `/privacy/` promises nothing is transmitted unless you ask
+for the report, so anonymous completions are not recorded even though the benchmark data
+would be useful.
+
+Every form carries an off-screen honeypot, the IP is written server-side by a trigger, and a
+single IP is capped at 12 writes an hour. See [supabase/README.md](supabase/README.md) for
+the verification table and the read queries.
+
+**The forms are disabled until a key is configured** — each submit shows an honest
+"not connected, nothing was sent" notice. Add the anon key to
+[`src/data/backend.js`](src/data/backend.js) or as a `SUPABASE_ANON_KEY` build secret.
+
+---
+
 ## Before launch
 
 - [ ] **Forms** — none are wired. Every submit shows an honest "not connected" notice

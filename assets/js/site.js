@@ -345,9 +345,11 @@
             '<p class="g3">Want the detailed report?</p>' +
             '<p class="sm mute" style="margin-top:.4rem;max-width:48ch">The full ' + (data.reportName || 'report') +
             ' — trait-by-trait breakdown, the benchmark set, and the three moves that shift the score fastest. Sent as a PDF.</p>' +
-            '<form class="sub" style="margin-top:1rem" data-capture="' + (data.id || 'diagnostic') + '">' +
+            '<form class="sub" style="margin-top:1rem" data-form="diagnostic" data-ref="' + (data.id || 'diagnostic') + '">' +
               '<input type="email" name="email" autocomplete="email" required placeholder="you@company.com" aria-label="Email address">' +
               '<button class="btn btn--teal" type="submit">Send the report</button>' +
+              '<div class="hp-field" aria-hidden="true"><label for="hp-d">Leave this field empty</label>' +
+              '<input type="text" name="hp" id="hp-d" tabindex="-1" autocomplete="off"></div>' +
             '</form>' +
             '<p class="xs faint" style="margin-top:.7rem">Your score is never published, sold, or shared. One email, then the newsletter if you want it.</p>' +
           '</div>' +
@@ -368,6 +370,22 @@
           setTimeout(function () { el.style.width = w; }, 120 + n * 45);
         });
       });
+      var runForm = $('form[data-form="diagnostic"]', resEl);
+      if (runForm) {
+        runForm.__run = {
+          instrument: data.id,
+          score: total,
+          max: data.max,
+          band: band.title || null,
+          weakest: weakest || null,
+          traits: qs.reduce(function (acc, q, n) {
+            var o = q.options[answers[n]];
+            if (q.trait && o) acc[q.trait] = o.value;
+            return acc;
+          }, {})
+        };
+      }
+
       bindCapture(resEl);
       root.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' });
       resEl.focus({ preventScroll: true });
@@ -381,25 +399,164 @@
     render();
   });
 
-  /* ------------------------------------------------- 9. FORMS (no back end yet) */
+  /* ============================================ 9. FORM SUBMISSION =========== */
+  /*  The site is static, so forms write straight to Supabase PostgREST using
+      the public anon key. The key protects nothing — the schema does: the anon
+      role may INSERT into three tables on named columns only, and may not read
+      anything back. See supabase/schema.sql.
+
+      With no key configured the forms stay honestly disabled rather than
+      pretending to send.                                                      */
+
+  var SB = {
+    url: document.body.getAttribute('data-sb-url') || '',
+    key: document.body.getAttribute('data-sb-key') || ''
+  };
+  SB.on = Boolean(SB.url && SB.key);
+
+  /* Columns that are real fields on `submissions`. Anything else a form
+     collects goes into `payload`, keyed by its own label, so the stored row
+     reads like the form did. */
+  var NAMED = { name: 'name', email: 'email', organization: 'organisation', jobTitle: 'role' };
+
+  function labelFor(el) {
+    if (el.id) {
+      var l = document.querySelector('label[for="' + CSS.escape(el.id) + '"]');
+      if (l) return l.textContent.replace(/\s+/g, ' ').trim();
+    }
+    var wrap = el.closest('.f');
+    var l2 = wrap && wrap.querySelector('label');
+    if (l2) return l2.textContent.replace(/\s+/g, ' ').trim();
+    return el.getAttribute('aria-label') || el.name || el.id || 'field';
+  }
+
+  function readForm(f) {
+    var out = { fields: {}, payload: {}, hp: '' };
+    $$('input, textarea, select', f).forEach(function (el) {
+      if (el.type === 'submit' || el.type === 'button') return;
+      var v = (el.value || '').trim();
+      if (el.name === 'hp') { out.hp = v; return; }
+      if (!v) return;
+      var col = NAMED[el.name];
+      if (col && !out.fields[col]) out.fields[col] = v;
+      else out.payload[labelFor(el)] = v.slice(0, 2000);
+    });
+    return out;
+  }
+
+  function note(cls, html) {
+    var p = document.createElement('p');
+    p.className = 'note ' + cls;
+    p.style.marginTop = '.9rem';
+    p.setAttribute('role', 'status');
+    p.setAttribute('tabindex', '-1');
+    p.innerHTML = html;
+    return p;
+  }
+
+  function post(table, body) {
+    return fetch(SB.url + '/rest/v1/' + table, {
+      method: 'POST',
+      headers: {
+        'apikey': SB.key,
+        'Authorization': 'Bearer ' + SB.key,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(body)
+    });
+  }
+
+  /* Turn a PostgREST failure into something a person can act on. */
+  function explain(status, text) {
+    var t = String(text || '');
+    if (status === 409 || /duplicate key|already exists/i.test(t))
+      return { cls: 'note--live', msg: '<b>You are already on the list.</b> Nothing further to do — the next issue goes out on Tuesday.' };
+    if (/rate limit/i.test(t))
+      return { cls: 'note--alert', msg: '<b>Too many submissions from this connection.</b> Try again in an hour, or write to us directly.' };
+    if (/subscribers_email_ck|submissions_email_ck|diagnostic_email_ck/.test(t))
+      return { cls: 'note--alert', msg: '<b>That email address does not look right.</b> Check it and try again.' };
+    if (/_hp_ck/.test(t))
+      return { cls: 'note--alert', msg: '<b>That submission looked automated.</b> If you are a person, please write to us directly.' };
+    if (status === 401 || status === 403)
+      return { cls: 'note--alert', msg: '<b>The form is not authorised.</b> This is our fault, not yours — please write to us directly while we fix it.' };
+    return { cls: 'note--alert', msg: '<b>That did not send.</b> Please try again, or write to us directly if it keeps failing.' };
+  }
+
   function bindCapture(scope) {
-    $$('form[data-capture], form[data-form]', scope || document).forEach(function (f) {
+    $$('form[data-form]', scope || document).forEach(function (f) {
       if (f.__bound) return; f.__bound = true;
+
       f.addEventListener('submit', function (e) {
         e.preventDefault();
+        if (!f.reportValidity()) return;
+
         var btn = $('button[type="submit"], .btn', f);
-        var ok = document.createElement('p');
-        ok.className = 'note note--live';
-        ok.style.marginTop = '.9rem';
-        ok.setAttribute('role', 'status');
-        ok.setAttribute('tabindex', '-1');
-        ok.innerHTML = '<b>Received.</b> This site is not yet connected to a mail platform — ' +
-                       'wire this form to the list before launch. Nothing was sent.';
-        /* Insert first, then disable the button, then move focus — disabling the
-           focused element would otherwise drop focus to document.body. */
-        f.parentNode.insertBefore(ok, f.nextSibling);
-        if (btn) { btn.disabled = true; btn.textContent = 'Received'; }
-        ok.focus();
+        var kind = f.getAttribute('data-form');
+        var ref = f.getAttribute('data-ref') || '';
+        var old = f.__note; if (old) old.remove();
+
+        /* Not configured — say so plainly rather than pretending. */
+        if (!SB.on) {
+          var n0 = note('note--alert',
+            '<b>Not connected yet.</b> This form is not wired to the database — ' +
+            'nothing was sent. Add the Supabase key and rebuild.');
+          f.parentNode.insertBefore(n0, f.nextSibling);
+          f.__note = n0; n0.focus();
+          return;
+        }
+
+        var read = readForm(f);
+        var email = (read.fields.email || '').toLowerCase();
+        var page = location.pathname;
+
+        var table, body;
+        if (kind === 'subscribe') {
+          table = 'subscribers';
+          body = { email: email, source: ref || 'unknown', page: page, hp: read.hp };
+        } else if (kind === 'diagnostic') {
+          var d = f.__run || {};
+          table = 'diagnostic_runs';
+          body = {
+            instrument: d.instrument, score: d.score, max_score: d.max,
+            band: d.band, weakest: d.weakest, traits: d.traits,
+            email: email, page: page, hp: read.hp
+          };
+        } else {
+          table = 'submissions';
+          body = {
+            kind: kind, ref: ref,
+            name: read.fields.name || null,
+            email: email,
+            organisation: read.fields.organisation || null,
+            role: read.fields.role || null,
+            payload: read.payload,
+            page: page, hp: read.hp
+          };
+        }
+
+        var label = btn ? btn.textContent : '';
+        if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+        post(table, body).then(function (r) {
+          if (r.ok) return null;
+          return r.text().then(function (t) { throw { status: r.status, text: t }; });
+        }).then(function () {
+          var ok = note('note--live', kind === 'subscribe'
+            ? '<b>You are on the list.</b> One structural idea, every Tuesday. Unsubscribe in one click, any time.'
+            : '<b>Received.</b> Every enquiry is read and answered within five working days — including the ones where the answer is no.');
+          f.parentNode.insertBefore(ok, f.nextSibling);
+          f.__note = ok;
+          if (btn) btn.textContent = 'Sent';
+          ok.focus();
+        }).catch(function (err) {
+          var e2 = explain(err && err.status, err && err.text);
+          var bad = note(e2.cls, e2.msg);
+          f.parentNode.insertBefore(bad, f.nextSibling);
+          f.__note = bad;
+          if (btn) { btn.disabled = false; btn.textContent = label; }
+          bad.focus();
+        });
       });
     });
   }

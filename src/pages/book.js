@@ -156,9 +156,10 @@ ${diag ? `
           <span class="kicker">${soon ? 'Not yet published' : 'Buy'}</span>
           ${soon
             ? `<p class="sm mute" style="margin-top:.8rem">This book is in manuscript. It is marked forthcoming everywhere it appears on this site, and it will not be listed for pre-order until a publication date is committed.</p>
-               <form class="sub" style="margin-top:1rem" data-form="book-${b.slug}">
+               <form class="sub" style="margin-top:1rem" data-form="book-notify" data-ref="${b.slug}">
                  <input type="email" name="email" autocomplete="email" required placeholder="you@company.com" aria-label="Email address">
                  <button class="btn btn--brass btn--sm btn--block" type="submit">Tell me when</button>
+               ${K.honeypot()}
                </form>`
             : `<p class="sm mute" style="margin-top:.8rem">Retail listings open when the ISBN is issued.
                  Until then the boxed set is the way to get it, and the instrument from this book is
@@ -167,9 +168,10 @@ ${diag ? `
                  ${K.btn('The boxed set', '/shop/the-stack/', 'btn--brass btn--block')}
                  ${diag ? K.btn('Run the free instrument', `/diagnostics/${diag.slug}/`, 'btn--ghost btn--block') : ''}
                </div>
-               <form class="sub" style="margin-top:1rem" data-form="book-${b.slug}-notify">
+               <form class="sub" style="margin-top:1rem" data-form="book-notify" data-ref="${b.slug}">
                  <input type="email" name="email" autocomplete="email" required placeholder="you@company.com" aria-label="Email address">
                  <button class="btn btn--ghost btn--sm" type="submit">Tell me when it lists</button>
+               ${K.honeypot()}
                </form>`}
         </div>
         <a class="card card--link" href="/shop/the-stack/">

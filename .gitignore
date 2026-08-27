@@ -1,4 +1,7 @@
+*.local
+.DS_Store
+.env
+.env.*
+.og-tmp/
 dist/
 node_modules/
-.DS_Store
-.og-tmp/

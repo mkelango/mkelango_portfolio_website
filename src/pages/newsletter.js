@@ -20,9 +20,10 @@ module.exports = function newsletter() {
           No motivation. No news roundup. No “five things I learned this week”. One mechanism,
           explained well enough to use on Monday.
         </p>
-        <form class="sub rv mt" style="--d:.45s;max-width:32rem" data-form="newsletter-main">
+        <form class="sub rv mt" style="--d:.45s;max-width:32rem" data-form="subscribe" data-ref="newsletter-hero">
           <input type="email" name="email" autocomplete="email" required placeholder="you@company.com" aria-label="Email address">
           <button class="btn btn--brass btn--lg" type="submit">Subscribe</button>
+        ${K.honeypot()}
         </form>
         <p class="xs faint mt-sm rv">One email a week. Unsubscribe in one click. The list is never sold, shared or rented.</p>
       </div>
@@ -81,9 +82,10 @@ module.exports = function newsletter() {
   <div class="wrap">
     <div class="tc rv" style="max-width:42rem;margin-inline:auto">
       <p class="pull">One mechanism, explained well enough to <em>use on Monday.</em></p>
-      <form class="sub jc mt-lg" data-form="newsletter-foot" style="max-width:30rem;margin-inline:auto">
+      <form class="sub jc mt-lg" data-form="subscribe" data-ref="newsletter-foot" style="max-width:30rem;margin-inline:auto">
         <input type="email" name="email" autocomplete="email" required placeholder="you@company.com" aria-label="Email address">
         <button class="btn btn--solid" type="submit">Subscribe</button>
+      ${K.honeypot()}
       </form>
       <p class="xs faint mt-sm">${site.lines.reject}</p>
     </div>

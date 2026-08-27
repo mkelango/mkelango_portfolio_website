@@ -38,14 +38,14 @@ module.exports = function press() {
 
         <div class="mark-box mt-sm" style="background:var(--surface)">
           <span class="mono faint">60 WORDS</span>
-          <p class="body-lg" style="margin-top:.8rem">M. K. Elango is a strategist family business groups and AI-era founders call when the ambition is real, the capital is real, and the structure is missing. He installs five named systems — portfolio architecture, organisational velocity, an AI engine, a computed goal system and a fast-entry method — and publishes the evidence standard he holds himself to. He founded StartNet, ElanOne, Publytics and the Think TN Foundation.</p>
+          <p class="body-lg" style="margin-top:.8rem">M. K. Elango is a strategist family business groups and AI-era founders call when the ambition is real, the capital is real, and the structure is missing. He installs five named systems — portfolio architecture, organisational velocity, an AI engine, a computed goal system and a fast-entry method — and publishes the evidence standard he holds himself to. He founded StartNet, elan1, Publytics and the Think TN Foundation.</p>
         </div>
 
         <div class="mark-box mt-sm" style="background:var(--surface)">
           <span class="mono faint">140 WORDS</span>
           <p class="body-lg" style="margin-top:.8rem">M. K. Elango is a strategist and author working with family business groups, unicorn and soonicorn founders, and large organisations across India, the Gulf and South-East Asia.</p>
-          <p class="body-lg" style="margin-top:.9rem">His work began with ten years at StartNet, where a single pattern across several hundred founders became <em>Copy, Customize, Innovate</em>. Four books followed, each answering one question at one altitude: <em>Milk, Mountain, Moonshot</em> on portfolio architecture, <em>The Accelerated Organization</em> on organisational velocity, <em>The AI Flywheel</em> on compounding AI capability, and <em>goal1</em> on computed goal systems. A sixth, <em>The Constitution Company</em>, is in manuscript.</p>
-          <p class="body-lg" style="margin-top:.9rem">He publishes an A/B/C evidence standard against every figure he prints, including on his own website, and maintains a public corrections log. He founded StartNet, ElanOne and Publytics, and the independent Think TN Foundation.</p>
+          <p class="body-lg" style="margin-top:.9rem">His work began with ten years at StartNet, where a single pattern across several hundred founders became <em>Copy, Customize, Innovate</em>. Four books followed, each answering one question at one altitude: <em>Milk, Mountain, Moonshot</em> on portfolio architecture, <em>The Accelerated Organization</em> on organisational velocity, <em>The AI Flywheel</em> on compounding AI capability, and <em>goal1</em> on computed goal systems. A sixth, <em>The Constitution Engine</em>, is in manuscript.</p>
+          <p class="body-lg" style="margin-top:.9rem">He publishes an A/B/C evidence standard against every figure he prints, including on his own website, and maintains a public corrections log. He founded StartNet, elan1 and Publytics, and the independent Think TN Foundation.</p>
         </div>
 
         <div class="note note--alert mt-lg">
@@ -64,7 +64,7 @@ module.exports = function press() {
           <span class="kicker">Fact sheet</span>
           <div class="stats" style="margin-top:1rem;gap:1.25rem">
             ${K.figure({ n: 5, label: 'Books complete in manuscript', g: 'A', note: 'Five manuscripts complete and held in project, verifiable on request. None yet carries an ISBN. The sixth is in draft.' })}
-            ${K.figure({ n: 4, label: 'Ventures operating', g: 'A', note: 'StartNet, ElanOne, Publytics and Think TN Foundation. Each a registered entity with a live property.' })}
+            ${K.figure({ n: 4, label: 'Ventures operating', g: 'A', note: 'StartNet, elan1, Publytics and Think TN Foundation. Each a registered entity with a live property.' })}
             ${K.figure({ n: 2026, dec: 0, label: 'Year this practice was founded', g: 'A', note: 'The advisory practice under this name. The underlying operating history at StartNet runs longer.' })}
           </div>
           <div class="mark-box__cap">Every figure above is graded. Hover a tag for the source.</div>

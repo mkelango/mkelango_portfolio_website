@@ -54,7 +54,7 @@ module.exports = function about() {
 
         <h2>Four · What I do now</h2>
         <p>Three layers, running at the same time.</p>
-        <p><strong>Milk</strong> — StartNet, ElanOne and Publytics. The businesses that pay, that supply the datasets and the reference clients, and that make the frameworks testable on live organisations rather than on slides.</p>
+        <p><strong>Milk</strong> — StartNet, elan1 and Publytics. The businesses that pay, that supply the datasets and the reference clients, and that make the frameworks testable on live organisations rather than on slides.</p>
         <p><strong>Mountain</strong> — Think TN Foundation. An independent Tamil Nadu policy institution on a long clock, with published governance and its own corrections log. It is deliberately kept at arm’s length from this site; its independence is easier to defend that way.</p>
         <p><strong>Moonshot</strong> — one objective at the far end, which everything above is subordinated to. Under my own standard that sentence must be physically specific and unchanged for a decade, so it is published on the Portfolio page or it is not published at all.</p>
         <p>I am running the framework I sell. <a href="/the-portfolio/">You can check it.</a></p>

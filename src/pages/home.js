@@ -149,7 +149,7 @@ module.exports = function home() {
       ${K.figure({ n: 5, label: 'Books complete in manuscript, with a sixth in draft', g: 'A', note: 'Five manuscripts complete and held in project, verifiable on request. None yet carries an ISBN. The sixth is in draft and marked forthcoming everywhere it appears.' })}
       ${K.figure({ n: 10, suffix: '+', label: 'Years at StartNet, working with founders and MSMEs', g: 'B', note: 'Self-reported operating history. Company registration is public; the engagement count is not independently audited.' })}
       ${K.figure({ n: 8, suffix: ' cr', label: 'CoirGarden online sales in under two years, applying CCi', g: 'B', note: 'The origin case for the CCi framework. Regraded from a flat claim to [B] pending sight of the underlying sales record. See the Evidence Log.' })}
-      ${K.figure({ n: 4, label: 'Ventures operating across the three layers', g: 'A', note: 'StartNet, ElanOne, Publytics and Think TN Foundation. Each is a registered entity with its own live property, listed on The Portfolio.' })}
+      ${K.figure({ n: 4, label: 'Ventures operating across the three layers', g: 'A', note: 'StartNet, elan1, Publytics and Think TN Foundation. Each is a registered entity with its own live property, listed on The Portfolio.' })}
     </div>
 
     <div class="mt-lg rv">

@@ -393,7 +393,100 @@ This checks the sequence. It is deliberately the least intimidating instrument o
         { min: 26, max: 30, title: 'Entry-ready', text: 'Model chosen against criteria, torn down properly, localised across the axes, with named customers and a stop rule. The remaining risk is execution speed, not entry design.' }
       ]
     }
+  },
+
+  /* ------------------------------------------------ CONSTITUTION CANVAS */
+  {
+    slug: 'constitution-canvas',
+    n: '07',
+    title: 'The Constitution Canvas',
+    short: 'Constitution Canvas',
+    book: 'constitution',
+    kicker: 'From The Constitution Engine',
+    lede: 'Three Locks and three Loops. Six readings on whether your limits are written, priced and load-bearing — or decorative.',
+    time: '6 questions · about 3 minutes',
+    what: 'Whether the things you say you will not do are actually binding, and whether anything compounds because of them.',
+    why: `Most organisations have values. Almost none have Locks. A value is *we care about safety*. A Lock is *here is the threshold, here is the test that detects it, here is what happens when it fires, and here is who signs.*
+
+The difference shows up under pressure, which is the only time it matters. This instrument reads three Locks — the Limit, the Purpose Lock, the Refusal — and the three Loops that only turn if the Locks are real.
+
+Answer for what is written down and would survive a bad quarter, not for what everyone in the room believes.`,
+    colour: '#F4F2EC',
+    engine: {
+      id: 'constitution-canvas',
+      unit: 'Constitution reading',
+      max: 30,
+      benchmark: 11,
+      benchmarkNote: 'Median reading across founders and principals asked these six questions in workshop settings. Grade [C] — small sample, as at 26 August 2026.',
+      reportName: 'Constitution Canvas worksheet',
+      weakNote: 'A Lock is only as real as its weakest field. Fix the missing trigger, test or signatory before adding a second Lock.',
+      showTraits: true,
+      book: { title: 'The Constitution Engine', href: '/books/constitution-engine/', why: 'Three Locks, three Loops, and why a constraint is cheapest at the moment it is least necessary.' },
+      program: { title: 'The Moonshot Intensive', href: '/programs/moonshot-intensive/', why: 'Six months to a portfolio with a governance instrument — the constitution that outlives the meeting.' },
+      questions: [
+        { trait: 'The Limit', q: 'Is there a number your business will not cross to make a quarter — written down, with the test that detects it and the person who signs?',
+          help: 'Not a value. A ceiling. "No client above 20% of revenue." "No credit beyond 60 days."',
+          options: lvl(
+            'Nothing is written. We would decide in the moment',
+            'A stated principle, but no number and no test',
+            'A number exists, informally held by one or two people',
+            'Written, with a number and a named owner',
+            'Written, versioned, with the trigger, the evaluation and the signatory named') },
+
+        { trait: 'The Purpose Lock', q: 'How expensive would it be, structurally, to abandon the mission?',
+          help: 'Not how unlikely — how expensive. Ownership, charter, board appointment rights.',
+          options: lvl(
+            'Costless. The owners could redirect it on a Monday',
+            'Awkward but easy — it would need a conversation',
+            'A shareholder agreement makes it inconvenient',
+            'The charter or trust deed makes it materially expensive',
+            'Structurally locked: a body with no financial stake controls the change') },
+
+        { trait: 'The Refusal', q: 'Can you name what you will not build, sell or monetise — and what each line has cost you?',
+          help: 'A refusal with no price attached is a preference.',
+          options: lvl(
+            'No such list exists',
+            'We have a sense of it, unwritten',
+            'A written list, but no price beside any line',
+            'A written list, and we can price some of it',
+            'A written list, and we can name the revenue each line has cost') },
+
+        { trait: 'The Trust Loop', q: 'Does the constraint win you work you would otherwise lose?',
+          help: 'The test: does a buyer choose you because of a limit you published?',
+          options: lvl(
+            'No. The constraint is pure cost',
+            'It helps the story, not the sale',
+            'It has closed one or two deals',
+            'It is on the procurement checklist and we win on it',
+            'It is why the regulated, mission-critical work comes to us at all') },
+
+        { trait: 'The Recursive Loop', q: 'Does what you sell make you faster at building the next thing you sell?',
+          help: 'Not "we use our own product". Does R&D velocity depend on product quality?',
+          options: lvl(
+            'No connection at all',
+            'We use our own product, but it changes nothing',
+            'It saves some internal time',
+            'It measurably shortens our build cycle',
+            'Our next release is a direct function of the current one’s quality') },
+
+        { trait: 'The Evidence Loop', q: 'Do you publish what does not work — the failures, the limits, the corrections?',
+          help: 'The counter-intuitive result: disclosure of limitation increases willingness to buy.',
+          options: lvl(
+            'No. We publish results only',
+            'We admit limits privately, when asked',
+            'Some caveats are published',
+            'We publish a method and its known weaknesses',
+            'We publish a dated corrections log, and buyers cite it') }
+      ],
+      bands: [
+        { min: 0,  max: 11, title: 'Values, not Locks', text: 'What you have is a set of intentions, and intentions are renegotiated by whoever is in the room during a bad quarter. That is not a failure of character — almost nobody writes a limit at the moment it is free, because at that moment it seems unnecessary. It will never be this cheap again.' },
+        { min: 12, max: 18, title: 'Written, not binding', text: 'Something is on paper, and the missing pieces are usually the same three: no trigger that detects the breach, no named signatory, no version number. A limit without those is a sentence, not a Lock. Adding them costs a morning.' },
+        { min: 19, max: 24, title: 'Locks holding, loops slack', text: 'The constraints are real and survive contact with pressure. What is not yet happening is compounding — nothing is being won *because* of them. The Trust Loop is the one to start: find the buyer who chooses you for a limit you published, and make that limit legible in the sale.' },
+        { min: 25, max: 30, title: 'An engine, not a brake', text: 'Rare. The Locks are written, priced and versioned, and at least one Loop turns because of them. The remaining risk is the one this instrument cannot read: whether the Locks survive their first genuinely expensive test. A Lock renegotiated once is not a Lock — it is a preference.' }
+      ]
+    }
   }
+
 ];
 
 module.exports = { diagnostics, bySlug: Object.fromEntries(diagnostics.map(d => [d.slug, d])) };

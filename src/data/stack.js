@@ -218,44 +218,60 @@ CoirGarden did ₹8 crore in online sales in under two years applying it. That i
 
   {
     id: 'constitution',
-    slug: 'constitution-company',
+    slug: 'constitution-engine',
     altitude: 'PROOF',
     layer: 'The Case',
     layerShort: 'The Case',
     horizon: '5 years',
-    title: 'The Constitution Company',
-    subtitle: 'How Constraint Became the Fastest Compounding in Business History',
-    titleLines: ['The', 'Constitution', 'Company'],
+    title: 'The Constitution Engine',
+    subtitle: 'How a Company Wrote Its Limits Before It Had Anything to Lose — and Grew Faster Than Any Business in History',
+    titleLines: ['The', 'Constitution', 'Engine'],
     colour: '#F4F2EC',
-    question: 'Has anyone actually done all five at once?',
-    prop: 'The safety constraints were not a tax on the growth. They were the mechanism of it.',
-    makes: 'The proof — a five-year case that all of the above is real.',
+    question: 'What stops it — and who decides?',
+    prop: 'A constraint is cheapest, most credible and most binding at the exact moment it is least necessary.',
+    makes: 'The proof — and the correction. A five-year case that tests all five frameworks and reports where they break.',
     status: 'forthcoming',
-    coverWords: ['THE', 'CONSTITUTION', 'COMPANY'],
+    coverWords: ['THE', 'CONSTITUTION', 'ENGINE'],
     coverRule: 'THE CASE · FORTHCOMING',
 
-    onePage: `Fifty people will write <em>the AI race book</em> and it will be obsolete in four months. This is the other book: a five-year case study of a company whose <strong>governance was the accelerant, not the brake</strong>. That is literally the CORE argument in <em>The AI Flywheel</em>, the governed-route argument in <em>goal1</em>, and the coherence argument in <em>Milk, Mountain, Moonshot</em> — which makes this the capstone of the stack rather than a sixth item on a shelf. Written under the same A/B/C evidence standard as everything else, which for this subject means directional language wherever a figure cannot be tagged against a primary filing or two tier-one outlets.`,
+    onePage: `Every book above this one answers a question about acceleration. None of them answers the question every reader of all five eventually asks: <em>when we are moving this fast, what keeps the structure from tearing itself apart — and who decides?</em> The five gesture at it. None makes it the subject. This one inverts the arrangement: <strong>the rim is the engine.</strong> Three <strong>Locks</strong> fixed before growth — a published capability ceiling with a trigger and a signatory, a legal structure that makes abandoning the mission expensive, and a named list of refusals with a price beside each line. Three <strong>Loops</strong> that only turn because the Locks are real — trust, recursion, evidence. And one governing rule: the price of installing a Lock rises with the square of what you have to lose, so install early, hold long, and never renegotiate under pressure. A Lock renegotiated once is not a Lock. It is a preference.`,
 
-    origin: `This is the capstone, and it is also the fastest-decaying book I will write. The thesis is a single inversion: everyone reads a constraint as a cost. In this case the constraint was the compounding mechanism — the thing that made the speed possible rather than the thing it had to be traded against.
+    origin: `I owe you a correction before the book starts.
 
-I am writing it under three conditions I set myself. The title names the phenomenon, not the trademark. Every figure carries a grade and a date, and the ones that cannot be tagged against a primary filing get directional language instead of a number. And it publishes inside twelve months of announcement or it does not publish at all — because a book about a five-year compounding curve that arrives two years late is a history, not a case.`,
+In an earlier draft I called this *The Constitution Company*. That was half right and half lazy. It named a **noun** when every book I have written names a **mechanism** — *Copy, Customize, Innovate* is a verb sequence, *The Accelerated Organization* is a state produced by twelve traits, *The AI Flywheel* is a machine, *Milk, Mountain, Moonshot* is three layers, *goal1* is a unit. "The Constitution Company" named a thing a company **is**, not a thing a reader can **run on Monday**. So it became *The Constitution Engine*, and fixing the title fixed the book.
+
+The subject is a company that wrote down what it would not do — a published capability ceiling, a purpose-locked legal structure, a named list of refusals — **before it had a product, customers, or anything at all to lose.** Every account treats those constraints as a tax it chose to pay and the growth as something that happened despite them. Read the mechanism rather than the narrative and the opposite is true. When the underlying capability is rented and identical for everyone, the only thing you cannot buy is the credibility of a limit you set before it cost you anything.
+
+Three locks, three loops, one law — and a debit column I have not hidden.`,
 
     contents: [
-      'Part I · The Inversion', 'Part II · Constraint as Architecture',
-      'Part III · The Governed Route', 'Part IV · What Compounded, and When',
-      'Part V · Reading This Against the Other Five', 'Appendix · Every Figure, Graded and Dated'
+      'Prologue · The Policy Nobody Had to Publish',
+      'Part I · The Anomaly — why this should not be possible',
+      'Part II · The Three Locks — the Limit, the Purpose Lock, the Refusal',
+      'Ch. 7 · Why Locks Are Cheap Early and Unpassable Late',
+      'Part III · The Three Loops — Trust, Recursion, Evidence',
+      'Ch. 9 · The Recursive Loop — the product that builds the product',
+      'Part IV · The Record, Fact-Checked',
+      'Ch. 15 · Where the Locks Bent — the chapter that saves the book',
+      'Ch. 17 · Three Counter-Cases — when a Lock becomes a bureaucracy',
+      'Part V · The Stack Applied — all five frameworks, run against one case',
+      'Ch. 22 · One Company, Five Frameworks — and Two Corrections',
+      'Part VI · The Build — writing your own, in ninety days',
+      'Part VII · The Honest Limits — five predictions, with the test that refutes each',
+      'Back matter · The Ledger of Open Questions'
     ],
 
     situations: [
-      { s: 'You want to see the five frameworks running in one organisation.', to: '/the-stack/', t: 'The Stack' },
-      { s: 'You are being told governance will slow you down.',                to: '/programs/ai-flywheel/', t: 'AI Flywheel: The 90-Day Start' },
-      { s: 'You want to know when it publishes.',                              to: '/newsletter/', t: 'The Inevitable, weekly' }
+      { s: 'You are moving fast and nothing tells you when to stop.',              to: '/diagnostics/constitution-canvas/', t: 'The Constitution Canvas' },
+      { s: 'You are being told governance will slow you down.',                    to: '/programs/ai-flywheel/', t: 'AI Flywheel: The 90-Day Start' },
+      { s: 'You run a ₹200-crore business with no AI in it at all.',               to: '/diagnostics/constitution-canvas/', t: 'The Constitution Canvas' }
     ],
-    instrument: null,
+    instrument: 'constitution-canvas',
+    note: 'This is the capstone, not the sixth item. Part V runs all five prior frameworks against one live case as falsification testing — and Chapter 22 issues the two places the case corrects me.',
     cautions: [
-      'The title names the phenomenon, not the company. That is both safer and better positioning.',
-      'Every headline figure needs a source with a date. Under the standard this book is the one place that cannot be loose.',
-      'This is a Mountain, not a Milk. Twelve months or it does not publish.'
+      'The title names the mechanism, not the company. No trademark on the cover, and no number either — figures go inside, tagged and dated.',
+      'Chapter 15 and Chapter 16 get written before Chapter 1. If the debit column can be written honestly and the framework still stands, there is a book. If not, that is worth discovering early.',
+      'The useful life of the narrative is twelve to eighteen months, anchored to the listing. Ship inside that window or it becomes a history rather than an argument.'
     ]
   }
 ];

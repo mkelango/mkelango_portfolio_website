@@ -161,7 +161,7 @@ const programs = [
     cohort: 'Limited · 10 installations a year',
     price: '₹20L – ₹90L',
     priceNote: 'Platform licence quoted separately. Banded by number of missions and systems of record.',
-    delivery: 'Elango leads the mission design. Instrumentation and the control plane by ElanOne; I am its founder.',
+    delivery: 'Elango leads the mission design. Instrumentation and the control plane by elan1; I am its founder.',
     phases: [
       { t: 'The three questions, on your current goals', d: 'Where does the number come from? Who decides when it moves? What happens next? Almost everyone fails the third. Doing this in public is the intervention.' },
       { t: 'Convert three objectives to missions', d: 'Intent, Measure, Level, Route. Three only. Converting thirty at once is how installations die.' },

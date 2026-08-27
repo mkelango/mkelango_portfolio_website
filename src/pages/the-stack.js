@@ -90,7 +90,7 @@ module.exports = function theStack() {
         { q: '“We have eleven AI pilots and nothing in production.”', a: 'Engine', to: '/books/ai-flywheel/', c: '#5B8DEF', i: '/diagnostics/flywheel-locator/' },
         { q: '“Nobody can say which system the number in the board deck came from.”', a: 'Instrument', to: '/books/goal1/', c: '#B4472E', i: '/diagnostics/three-questions/' },
         { q: '“We need to be in that market in ninety days and we are starting from nothing.”', a: 'Move', to: '/books/cci/', c: '#8E7130', i: '/diagnostics/cci-readiness/' },
-        { q: '“Show me one organisation where all five of these ran at once.”', a: 'Proof', to: '/books/constitution-company/', c: '#F4F2EC', i: null }
+        { q: '“Show me one organisation where all five of these ran at once.”', a: 'Proof', to: '/books/constitution-engine/', c: '#F4F2EC', i: null }
       ].map(x => `
         <a class="card card--link inst-card" href="${x.to}" style="--c:${x.c}">
           <div class="card__body">

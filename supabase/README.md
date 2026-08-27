@@ -5,7 +5,7 @@ Supabase PostgREST using the **public anon key**, and the security model lives e
 in [`schema.sql`](schema.sql).
 
 Say that plainly, because it is the thing most easily got wrong: **the anon key is not a
-secret.** It ships in the HTML of all 58 pages and anyone can read it. It grants exactly
+secret.** It ships in the HTML of every page and anyone can read it. It grants exactly
 what the schema grants and nothing more.
 
 ## What is stored

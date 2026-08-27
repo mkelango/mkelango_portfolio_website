@@ -9,7 +9,8 @@ const md = t => t.split('\n\n').map(p =>
   `<p>${p.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>')}</p>`).join('');
 
 const MARKS = {
-  mmm: K.layersMark, flywheel: K.flywheelMark, tao: K.traitsMark, goal1: K.missionMark, cci: K.cciMark
+  mmm: K.layersMark, flywheel: K.flywheelMark, tao: K.traitsMark, goal1: K.missionMark,
+  cci: K.cciMark, constitution: K.constitutionMark
 };
 
 module.exports = function book(b) {

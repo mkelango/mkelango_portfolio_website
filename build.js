@@ -104,6 +104,40 @@ function build() {
   fs.writeFileSync(path.join(OUT, 'CNAME'), SEO.ORIGIN.replace('https://', '') + '\n');
   fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 
+  /* ---- redirects ----
+     GitHub Pages cannot issue a 301, so a moved page leaves a client-side stub:
+     a canonical pointing at the new URL, a meta refresh, and a visible link for
+     anyone whose browser does neither. Marked noindex so the stub never ranks.  */
+  const REDIRECTS = {
+    '/books/constitution-company/': '/books/constitution-engine/'
+  };
+  for (const [from, to] of Object.entries(REDIRECTS)) {
+    const dir = path.join(OUT, from.replace(/^\/|\/$/g, ''));
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, 'index.html'), `<!doctype html>
+<html lang="en-IN" data-redirect="${to}">
+<head>
+<meta charset="utf-8">
+<title>Moved — ${SEO.ORIGIN}${to}</title>
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="${SEO.ORIGIN}${to}">
+<meta http-equiv="refresh" content="0; url=${to}">
+<meta name="description" content="This page has moved.">
+<style>body{background:#0B0E14;color:#F4F2EC;font-family:Outfit,system-ui,sans-serif;
+display:grid;place-items:center;min-height:100vh;margin:0;text-align:center;padding:2rem;line-height:1.6}
+a{color:#C8A24A}</style>
+</head>
+<body>
+<main>
+  <p>This book was retitled. <strong>The Constitution Company</strong> is now
+     <strong>The Constitution Engine</strong>.</p>
+  <p><a href="${to}">Continue to ${SEO.ORIGIN}${to}</a></p>
+</main>
+<script>location.replace(${JSON.stringify(to)});</script>
+</body>
+</html>`);
+  }
+
   /* ---- 404 ---- */
   write('/404', page({
     noindex: true,

@@ -4,7 +4,7 @@
 
 The website for M. K. Elango, built to the specification in `MKELANGO-WEBSITE-STRATEGY.md`.
 Hosted on GitHub Pages at **mkelango.com**.
-58 pages, 57 markdown twins, 57 social cards, 271 FAQs, a linked entity graph —
+59 pages, 58 markdown twins, 58 social cards, 275 FAQs, a linked entity graph —
 zero runtime dependencies, one build command.
 
 ---
@@ -49,7 +49,7 @@ src/
   kit.js          Every reusable mark: evidence tags, cards, ledgers, the stack ladder,
                   book covers (SVG), framework diagrams (SVG), answer blocks, FAQs.
   seo.js          The schema engine. Entity nodes, typed builders, price-band parsing.
-  seo-meta.js     Per-route titles, descriptions, answer blocks and FAQs. 57 routes.
+  seo-meta.js     Per-route titles, descriptions, answer blocks and FAQs. 58 routes.
   generate.js     robots.txt · sitemap.xml · llms.txt · llms-full.txt · feed.xml ·
                   site.webmanifest · the HTML→Markdown converter for the page twins.
   data/           All content. site · stack · programs · events · coaching · diagnostics · misc.
@@ -198,7 +198,7 @@ No ISBN is invented; shop offers are `PreOrder` until payments are connected.
 
 - **The answer block.** 40–60 words under every hero, first sentence a direct definition,
   written to be lifted verbatim. Marked `speakable` and mirrored into `WebPage` schema.
-- **271 FAQs** across 57 routes, rendered visibly *and* as `FAQPage`. `check.js` fails if
+- **275 FAQs** across 58 routes, rendered visibly *and* as `FAQPage`. `check.js` fails if
   the visible count and the schema count disagree.
 - **Bands and methods published in advance** — every diagnostic states its scoring, its
   benchmark and its grade before you take it, so a quoted answer is a correct one.
@@ -241,7 +241,7 @@ homepage answer to *"How much does it cost to work with M. K. Elango?"* to a sin
 about shop prices, wrong by three orders of magnitude and emitted into FAQPage schema, the
 markdown twin and `llms-full.txt`. The audit also surfaced a genuine product bug behind it:
 the Moonshot Test published a maximum of 28 while its own scoring summed seven questions of
-1–5. Both are fixed; `src/data/diagnostics.js` now reconciles for all six instruments
+1–5. Both are fixed; `src/data/diagnostics.js` now reconciles for all seven instruments
 (declared max = questions × levels = highest band, with contiguous bands).
 
 The rest, by cluster:

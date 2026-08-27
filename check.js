@@ -49,6 +49,15 @@ for (const f of pages) {
   const S = route;
   const isAlias = route === '/404.html';
 
+  /* A redirect stub is not a content page — it is deliberately thin and noindex. */
+  if (/<html[^>]+data-redirect="/.test(html)) {
+    const to = /data-redirect="([^"]+)"/.exec(html)[1];
+    if (!exists.has(to)) err(S, `redirect points at a missing page: ${to}`);
+    if (!/name="robots" content="noindex/.test(html)) err(S, 'redirect stub is not noindex');
+    if (!new RegExp('rel="canonical" href="' + ORIGIN + to + '"').test(html)) err(S, 'redirect stub canonical does not point at the target');
+    continue;
+  }
+
   /* ---- links ---- */
   for (const m of html.matchAll(/href="([^"]+)"/g)) {
     const h = m[1];
@@ -178,7 +187,10 @@ for (const r of required) if (!exists.has(r)) err('SITE', `missing ${r}`);
 if (exists.has('/sitemap.xml')) {
   const sm = fs.readFileSync(path.join(OUT, 'sitemap.xml'), 'utf8');
   const locs = [...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
-  const routeSet = new Set(pages.filter(p => p.endsWith('index.html'))
+  /* Redirect stubs are deliberately absent from the sitemap. */
+  const routeSet = new Set(pages
+    .filter(p => p.endsWith('index.html'))
+    .filter(p => !/<html[^>]+data-redirect="/.test(fs.readFileSync(p, 'utf8')))
     .map(p => ORIGIN + rel(p).replace(/index\.html$/, '')));
   routeSet.delete(ORIGIN + '/404/');
   for (const l of locs) if (!routeSet.has(l)) err('SITEMAP', `lists a URL that is not built: ${l}`);
@@ -216,6 +228,21 @@ if (exists.has('/CNAME')) {
   const cname = fs.readFileSync(path.join(OUT, 'CNAME'), 'utf8').trim();
   const expect = ORIGIN.replace('https://', '');
   if (cname !== expect) err('PAGES', `CNAME is "${cname}" but canonicals use "${expect}"`);
+}
+
+/* Every book in the stack must have a page at its own slug. A retitle that
+   changes the slug without changing the route table would otherwise ship. */
+{
+  const { stack } = require('./src/data/stack');
+  for (const b of stack) {
+    const r = `/books/${b.slug}/`;
+    if (!exists.has(r)) err('STACK', `${b.title} declares slug "${b.slug}" but ${r} was not built`);
+  }
+  const { diagnostics } = require('./src/data/diagnostics');
+  for (const b of stack) {
+    if (!b.instrument) continue;
+    if (!diagnostics.some(d => d.slug === b.instrument)) err('STACK', `${b.title} points at instrument "${b.instrument}" which does not exist`);
+  }
 }
 
 if (exists.has('/robots.txt')) {

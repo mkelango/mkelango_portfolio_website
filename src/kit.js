@@ -420,6 +420,58 @@ function cciMark(w = 460) {
   </svg>`;
 }
 
+
+/** The Constitution Engine — three Locks fixed first, three Loops that follow. */
+function constitutionMark(w = 520) {
+  const h = Math.round(w * 0.52);
+  const locks = [
+    { n: 'THE LIMIT',       d: 'a ceiling, a trigger, a signatory', c: '#C8A24A' },
+    { n: 'THE PURPOSE LOCK',d: 'abandoning it is expensive',        c: '#2FA592' },
+    { n: 'THE REFUSAL',     d: 'a list, with a price each',         c: '#B4472E' }
+  ];
+  const loops = [
+    { n: 'TRUST',     d: 'constraint → defensible sale', c: '#C8A24A' },
+    { n: 'RECURSION', d: 'the product builds the product', c: '#2FA592' },
+    { n: 'EVIDENCE',  d: 'disclosure becomes the asset',  c: '#B4472E' }
+  ];
+  const colW = w * 0.40, gap = w * 0.10;
+  const x1 = w * 0.045, x2 = x1 + colW + gap;
+  const top = h * 0.20, rowH = h * 0.215;
+
+  const col = (items, x, dashed) => items.map((it, i) => {
+    const y = top + i * rowH;
+    return `<rect x="${x}" y="${y}" width="${colW}" height="${rowH * 0.78}" rx="5"
+        fill="${it.c}" opacity=".10"${dashed ? ' stroke="' + it.c + '" stroke-width="1" stroke-dasharray="3 3" stroke-opacity=".5"' : ''}/>
+      <rect x="${x}" y="${y}" width="2.5" height="${rowH * 0.78}" rx="1" fill="${it.c}"/>
+      <text x="${x + 13}" y="${y + rowH * 0.32}" fill="${it.c}" font-family="Outfit, sans-serif"
+        font-size="${h * 0.048}" letter-spacing="0.14em" font-weight="600">${it.n}</text>
+      <text x="${x + 13}" y="${y + rowH * 0.58}" fill="rgba(244,242,236,.46)" font-family="Outfit, sans-serif"
+        font-size="${h * 0.043}">${esc(it.d)}</text>`;
+  }).join('');
+
+  const arrows = [0, 1, 2].map(i => {
+    const y = top + i * rowH + rowH * 0.39;
+    return `<path d="M ${x1 + colW + 6} ${y} L ${x2 - 8} ${y} m -6 -4 l 6 4 l -6 4"
+      stroke="rgba(244,242,236,.30)" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
+  }).join('');
+
+  return `<svg viewBox="0 0 ${w} ${h}" role="img" xmlns="http://www.w3.org/2000/svg"
+      aria-label="The Constitution Engine: three Locks fixed before growth, driving three Loops that compound">
+    <text x="${x1}" y="${h * 0.10}" fill="rgba(244,242,236,.44)" font-family="Outfit, sans-serif"
+      font-size="${h * 0.045}" letter-spacing="0.2em">THE THREE LOCKS</text>
+    <text x="${x2}" y="${h * 0.10}" fill="rgba(244,242,236,.44)" font-family="Outfit, sans-serif"
+      font-size="${h * 0.045}" letter-spacing="0.2em">THE THREE LOOPS</text>
+    <text x="${x1}" y="${h * 0.155}" fill="rgba(244,242,236,.30)" font-family="Outfit, sans-serif"
+      font-size="${h * 0.04}">what you fix before you grow</text>
+    <text x="${x2}" y="${h * 0.155}" fill="rgba(244,242,236,.30)" font-family="Outfit, sans-serif"
+      font-size="${h * 0.04}">what compounds because you fixed it</text>
+    ${col(locks, x1, false)}${col(loops, x2, true)}${arrows}
+    <line x1="${x1}" y1="${h * 0.90}" x2="${w - x1}" y2="${h * 0.90}" stroke="rgba(244,242,236,.13)"/>
+    <text x="${x1}" y="${h * 0.965}" fill="rgba(244,242,236,.52)" font-family="Outfit, sans-serif"
+      font-size="${h * 0.046}">Locks are cheap early and unpassable late. Loops only turn if the Locks are real.</text>
+  </svg>`;
+}
+
 /** Portrait slot — an honest placeholder, designed rather than apologised for. */
 function portraitSlot(label = 'ONE PORTRAIT') {
   return `<div class="portrait">
@@ -434,5 +486,5 @@ module.exports = {
   icon, esc, etag, figure, kicker, btn, tlink, rule, shead, crumb,
   field, fields, seats, lrow, card, railX, stackLadder, cover, headLines, time, honeypot,
   answerBlock, faqSection, factTable,
-  flywheelMark, layersMark, missionMark, traitsMark, cciMark, portraitSlot, GRADE_DEF
+  flywheelMark, layersMark, missionMark, traitsMark, cciMark, constitutionMark, portraitSlot, GRADE_DEF
 };

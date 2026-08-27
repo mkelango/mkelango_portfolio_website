@@ -72,9 +72,9 @@ function personNode() {
    not on the Person — this is the correct direction of the relation. */
 const VENTURES = [
   { id: 'startnet',  name: 'StartNet',            url: 'https://startnet.in', desc: 'The infrastructure behind Tamil Nadu’s AI startup ecosystem.' },
-  { id: 'elanone',   name: 'ElanOne',             url: 'https://elan1.ai',    desc: 'Governed agentic business applications with a human approval gate.' },
+  { id: 'elan1',     name: 'elan1',             url: 'https://elan1.ai',    desc: 'Governed agentic business applications with a human approval gate.' },
   { id: 'publytics', name: 'Publytics',           url: 'https://publytics.in', desc: null },
-  { id: 'thinktn',   name: 'Think TN Foundation', url: 'https://thinktn.org', desc: 'An independent Tamil Nadu policy institution.', ngo: true }
+  { id: 'thinktn',   name: 'Think TN Foundation', url: 'https://thinktn.in', desc: 'An independent Tamil Nadu policy institution.', ngo: true }
 ];
 
 function ventureNodes() {

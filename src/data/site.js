@@ -115,7 +115,8 @@ const footerCols = [
       { label: 'Do You Have a Moonshot?',   href: '/diagnostics/moonshot-test/' },
       { label: 'The Coherence Matrix',      href: '/diagnostics/coherence-matrix/' },
       { label: 'The Three Questions',       href: '/diagnostics/three-questions/' },
-      { label: 'CCi Readiness',             href: '/diagnostics/cci-readiness/' }
+      { label: 'CCi Readiness',             href: '/diagnostics/cci-readiness/' },
+      { label: 'The Constitution Canvas',    href: '/diagnostics/constitution-canvas/' }
     ]
   },
   {
@@ -126,7 +127,7 @@ const footerCols = [
       { label: 'The AI Flywheel',            href: '/books/ai-flywheel/' },
       { label: 'goal1',                      href: '/books/goal1/' },
       { label: 'Copy, Customize, Innovate',  href: '/books/cci/' },
-      { label: 'The Constitution Company',   href: '/books/constitution-company/' }
+      { label: 'The Constitution Engine',    href: '/books/constitution-engine/' }
     ]
   },
   {

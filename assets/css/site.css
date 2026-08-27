@@ -550,18 +550,7 @@ body {
 .stack--compact .stk__ttl { font-size: .95rem; }
 .stack--compact .stk__go { width: 26px; height: 26px; }
 
-/* Framework diagrams are drawn for dark. On light bands they carry their own plate,
-   which re-declares the ink token set so everything inside it resolves correctly. */
-.mark-box--plate {
-  --bg: var(--ink); --fg: #F4F2EC;
-  --fg-mute: rgba(244,242,236,.66); --fg-faint: rgba(244,242,236,.55);
-  --hair: rgba(244,242,236,.12); --hair-str: rgba(244,242,236,.24);
-  --surface: var(--ink-2); --surface-2: var(--ink-3);
-  --brass-ctx: var(--brass); --teal-ctx: var(--teal-hi); --sienna-ctx: var(--sienna-hi);
-  background: linear-gradient(160deg, var(--ink-2), var(--ink));
-  border-color: var(--hair-str);
-  color: var(--fg);
-}
+
 
 /* Altitude rail — persistent page-position marker */
 .rail {
@@ -1295,3 +1284,25 @@ a.sr:focus, a.sr:focus-visible {
   left: -9999px; top: auto; width: 1px; height: 1px;
   overflow: hidden; opacity: 0; pointer-events: none;
 }
+
+/* ============================================================================
+   21. LATE OVERRIDES
+   These must beat the base component rules on source order, so they live last.
+   ========================================================================== */
+
+/* Framework diagrams are drawn for dark. On light bands they carry their own plate,
+   which re-declares the ink token set so everything inside it resolves correctly. */
+.mark-box--plate {
+  --bg: var(--ink); --fg: #F4F2EC;
+  --fg-mute: rgba(244,242,236,.66); --fg-faint: rgba(244,242,236,.55);
+  --hair: rgba(244,242,236,.12); --hair-str: rgba(244,242,236,.24);
+  --surface: var(--ink-2); --surface-2: var(--ink-3);
+  --brass-ctx: var(--brass); --teal-ctx: var(--teal-hi); --sienna-ctx: var(--sienna-hi);
+  background: linear-gradient(160deg, var(--ink-2), var(--ink));
+  border-color: var(--hair-str);
+  color: var(--fg);
+}
+
+/* The base .mark-box background is derived from --fg, which the plate has just
+   redefined to light — so it must be restated here, after the base rule. */
+.mark-box--plate { background: linear-gradient(160deg, var(--ink-2), var(--ink)); }

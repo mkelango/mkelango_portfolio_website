@@ -93,7 +93,7 @@ module.exports = function thePortfolio() {
 
     <div class="note note--alert mt-lg rv">
       <span class="kicker note__k">Disclosure, stated before anyone asks</span>
-      Delivery for Flywheel installations is by <b>StartNet</b>, and goal1 instrumentation is by <b>ElanOne</b>.
+      Delivery for Flywheel installations is by <b>StartNet</b>, and goal1 instrumentation is by <b>elan1</b>.
       I am the founder of both. The disclosure appears on each affected programme page above the pricing band, not in a footnote.
     </div>
   </div>

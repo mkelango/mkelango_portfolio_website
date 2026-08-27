@@ -14,7 +14,7 @@ const portfolio = {
       note: 'They supply the capital, the datasets and the reference clients — and they make the frameworks testable on live organisations.',
       entities: [
         { name: 'StartNet', line: 'The infrastructure behind Tamil Nadu’s AI startup ecosystem — five properties, one system.', href: 'https://startnet.in', domain: 'startnet.in' },
-        { name: 'ElanOne',  line: 'Governed agentic business applications — ten apps, one control plane, a human approval gate.', href: 'https://elan1.ai', domain: 'elan1.ai' },
+        { name: 'elan1',  line: 'Governed agentic business applications — ten apps, one control plane, a human approval gate.', href: 'https://elan1.ai', domain: 'elan1.ai' },
         { name: 'Publytics',line: 'One line — to be supplied by the founder before launch.', href: 'https://publytics.in', domain: 'publytics.in', pending: true }
       ]
     },
@@ -23,7 +23,7 @@ const portfolio = {
       colour: '#2FA592',
       note: 'A chartered institution with published governance, an evidence-tag system and a corrections log. Different audience, different register — and its independence is easier to defend if it stays at arm’s length from this site.',
       entities: [
-        { name: 'Think TN Foundation', line: 'An independent Tamil Nadu policy institution, built to be checked rather than believed.', href: 'https://thinktn.org', domain: 'thinktn.org' }
+        { name: 'Think TN Foundation', line: 'An independent Tamil Nadu policy institution, built to be checked rather than believed.', href: 'https://thinktn.in', domain: 'thinktn.in' }
       ]
     },
     {
@@ -53,6 +53,18 @@ const evidenceStandard = [
 
 const evidenceLog = [
   {
+    date: '27 August 2026', type: 'Title changed',
+    title: 'Book six is now The Constitution Engine, not The Constitution Company',
+    body: 'The sixth book was published on this site as *The Constitution Company* from launch until 27 August 2026. It has been retitled. The old name described what a company **is**; every other book in the stack names a mechanism a reader can run. The framework it carries — three Locks, three Loops, and the Cost Curve of Commitment — did not exist under the old title, which is the clearest evidence that the title was the problem. The former URL redirects and is marked noindex rather than being deleted.',
+    grade: null
+  },
+  {
+    date: '27 August 2026', type: 'Figures upgraded',
+    title: 'Valuation figures for the Constitution Engine subject are now traceable',
+    body: 'A previous entry on this page recorded that headline valuation figures were not traceable to a primary filing and were [B] at best. Two are now [A]: a $965B post-money valuation on a round closed 28 May 2026, and a confidential IPO filing on 1 June 2026, both company-announced and reported by multiple tier-one outlets. The run-rate figures remain [A/B] — company-disclosed, annualised, and not audited, because the company publishes no audited statements. The $2 trillion figure remains [C]: it is a forecast, and it will not appear in the book or on this site as anything else.',
+    grade: 'A'
+  },
+  {
     date: '26 August 2026', type: 'Standard published',
     title: 'The A/B/C standard applies to this website, not only to the books',
     body: `Every figure published on ${site.domain} now carries a grade and an as-at date, rendered inline and hoverable. Figures that cannot be graded are removed rather than softened. This entry exists so the standard has a start date.`,
@@ -72,7 +84,7 @@ const evidenceLog = [
   },
   {
     date: '26 August 2026', type: 'Figure withheld',
-    title: 'Valuation figures in the forthcoming Constitution Company',
+    title: 'Valuation figures in the forthcoming Constitution Engine',
     body: 'Headline valuation figures circulating in secondary reporting are not traceable to a primary filing. Under this standard they are [B] at best. Directional language is used in the manuscript until a dated primary source or two tier-one outlets can be cited.',
     grade: null, alert: true
   },
@@ -85,7 +97,7 @@ const evidenceLog = [
   {
     date: '26 August 2026', type: 'Disclosure',
     title: 'Ventures deliver some programme work',
-    body: 'Flywheel installations are delivered by StartNet and goal1 instrumentation by ElanOne. Both are founded by M. K. Elango. The disclosure appears on each affected programme page above the pricing band, not in a footnote.',
+    body: 'Flywheel installations are delivered by StartNet and goal1 instrumentation by elan1. Both are founded by M. K. Elango. The disclosure appears on each affected programme page above the pricing band, not in a footnote.',
     grade: null
   }
 ];

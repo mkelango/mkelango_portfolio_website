@@ -1,0 +1,14 @@
+{
+  "name": "mkelango-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "mkelango.com — Make the impossible inevitable.",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js --watch",
+    "serve": "npx -y serve dist -l 4321",
+    "og": "node og.js",
+    "check": "node build.js && node check.js",
+    "release": "node og.js && node build.js && node check.js"
+  }
+}

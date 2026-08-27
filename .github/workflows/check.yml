@@ -1,0 +1,22 @@
+# The validator is the thing that keeps the SEO/AEO/GEO work true over time.
+# It fails the build on broken links, duplicate titles, invalid JSON-LD,
+# dangling @id references, FAQ schema drift and missing schema images.
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build
+        run: node build.js
+      - name: Validate structure, a11y, SEO, AEO, GEO
+        run: node check.js

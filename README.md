@@ -271,14 +271,17 @@ Everything above is build-time and already done. These need the live domain:
 
 ## Deploy
 
-Static output. `vercel.json` and `netlify.toml` are included with clean URLs, immutable
-asset caching and baseline security headers.
+Static output, no server requirements. `vercel.json` and `netlify.toml` are included with
+clean URLs, an explicit build command, tiered caching (immutable only for content-addressed
+files) and baseline security headers.
+
+**See [DEPLOY.md](DEPLOY.md)** for the full runbook: connecting the repository to a host,
+pointing `mkelango.com` at it from Hostinger, and the post-launch verification list.
 
 ```bash
-node build.js && npx vercel deploy --prod dist
+npm run release     # og cards → build → validate
+git push            # Vercel deploys main; the GitHub Action runs the same validator
 ```
-
-Any static host works — the output is plain HTML with no server requirements.
 
 ---
 

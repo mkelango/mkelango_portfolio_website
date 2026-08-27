@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* ============================================================================
-   mkelango.com — static site generator
+   Static site generator
    Zero dependencies. `node build.js` writes the whole site to /dist.
    Clean URLs: every route becomes <route>/index.html.
    ========================================================================== */
@@ -73,6 +73,7 @@ function build() {
 
   /* ---- machine-readable surface: markdown twins, llms.txt, feeds ---- */
   const G = require('./src/generate');
+  const SEO = require('./src/seo');
   const seoMeta = require('./src/seo-meta');
 
   const mdPages = [];
@@ -83,11 +84,11 @@ function build() {
     const meta = seoMeta[r.path] || {};
     const md = G.htmlToMarkdown(fs.readFileSync(file, 'utf8'), {
       title: meta.title || r.title,
-      url: 'https://mkelango.com' + r.path,
+      url: SEO.ORIGIN + r.path,
       description: meta.description || r.desc
     });
     fs.writeFileSync(path.join(dir, 'index.md'), md);
-    mdPages.push({ url: 'https://mkelango.com' + r.path, md });
+    mdPages.push({ url: SEO.ORIGIN + r.path, md });
   }
 
   fs.writeFileSync(path.join(OUT, 'robots.txt'), G.robots());
@@ -97,10 +98,16 @@ function build() {
   fs.writeFileSync(path.join(OUT, 'feed.xml'), G.feed());
   fs.writeFileSync(path.join(OUT, 'site.webmanifest'), G.manifest());
 
+  /* GitHub Pages: CNAME binds the custom domain to the deployment, and
+     .nojekyll stops Jekyll from touching the output. Both are derived, so the
+     domain can never drift between the schema and the host binding. */
+  fs.writeFileSync(path.join(OUT, 'CNAME'), SEO.ORIGIN.replace('https://', '') + '\n');
+  fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
+
   /* ---- 404 ---- */
   write('/404', page({
     noindex: true,
-    title: 'Page not found', desc: 'That page does not exist on mkelango.com.', path: '/404/',
+    title: 'Page not found', desc: `That page does not exist on ${SEO.ORIGIN.replace('https://', '')}.`, path: '/404/',
     seo: { title: 'Page not found', description: 'That page does not exist. Try the stack, the six free instruments, or the events calendar.' },
     content: `<section class="band on-ink" style="min-height:62vh;display:grid;place-items:center">
       <div class="wrap tc">

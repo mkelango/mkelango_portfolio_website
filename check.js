@@ -8,6 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 const OUT = path.join(__dirname, 'dist');
+const ORIGIN = `https://${require('./src/data/site').site.domain}`;
 
 const errors = [];
 const warns = [];
@@ -136,7 +137,7 @@ for (const f of pages) {
         }
       })(graph);
       for (const r of new Set(refs)) {
-        if (r.startsWith('https://mkelango.com') && !ids.has(r)) {
+        if (r.startsWith(ORIGIN) && !ids.has(r)) {
           err(S, `JSON-LD dangling @id reference: ${r}`);
         }
       }
@@ -171,15 +172,15 @@ for (const f of pages) {
 /* ------------------------------------------------------- site-level files */
 
 const required = ['/robots.txt', '/sitemap.xml', '/llms.txt', '/llms-full.txt',
-                  '/feed.xml', '/site.webmanifest', '/404.html'];
+                  '/feed.xml', '/site.webmanifest', '/404.html', '/CNAME', '/.nojekyll'];
 for (const r of required) if (!exists.has(r)) err('SITE', `missing ${r}`);
 
 if (exists.has('/sitemap.xml')) {
   const sm = fs.readFileSync(path.join(OUT, 'sitemap.xml'), 'utf8');
   const locs = [...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
   const routeSet = new Set(pages.filter(p => p.endsWith('index.html'))
-    .map(p => 'https://mkelango.com' + rel(p).replace(/index\.html$/, '')));
-  routeSet.delete('https://mkelango.com/404/');
+    .map(p => ORIGIN + rel(p).replace(/index\.html$/, '')));
+  routeSet.delete(ORIGIN + '/404/');
   for (const l of locs) if (!routeSet.has(l)) err('SITEMAP', `lists a URL that is not built: ${l}`);
   for (const r of routeSet) if (!locs.includes(r)) warn('SITEMAP', `built page not in sitemap: ${r}`);
   if (!/<lastmod>/.test(sm)) warn('SITEMAP', 'no lastmod');
@@ -203,10 +204,18 @@ if (exists.has('/sitemap.xml')) {
       }
     })(JSON.parse(ld[1].replace(/\\u003c/g, '<')));
     for (const u of urls) {
-      const local = u.replace('https://mkelango.com', '');
+      const local = u.replace(ORIGIN, '');
       if (!exists.has(local)) err('SCHEMA', `image referenced but not built: ${u}`);
     }
   }
+}
+
+/* The CNAME that binds the Pages deployment must match the domain the schema
+   and canonicals claim, or every canonical points at a host that is not serving. */
+if (exists.has('/CNAME')) {
+  const cname = fs.readFileSync(path.join(OUT, 'CNAME'), 'utf8').trim();
+  const expect = ORIGIN.replace('https://', '');
+  if (cname !== expect) err('PAGES', `CNAME is "${cname}" but canonicals use "${expect}"`);
 }
 
 if (exists.has('/robots.txt')) {

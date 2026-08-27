@@ -1,13 +1,13 @@
 # Deploying mkelango.com
 
-The repository is at **github.com/mkelango/mkelango_portfolio_website** and builds clean on
-every push (`.github/workflows/check.yml`).
+Host: **GitHub Pages**, published from `main` by
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
+Repository: **github.com/mkelango/mkelango_portfolio_website**
 
-Two steps remain, and both need someone signed in to an account — they cannot be done from
-the repository:
+Push to `main` → build → validate → live on `mkelango.com`. Nothing is published that does
+not pass `check.js`.
 
-1. **Connect the repo to a host** (Vercel, below — Netlify config is also included)
-2. **Point mkelango.com at it** (DNS, currently parked at Hostinger)
+One step remains, and it needs your Hostinger account: **pointing the DNS at GitHub.**
 
 ---
 
@@ -15,86 +15,144 @@ the repository:
 
 | | |
 |---|---|
-| `mkelango.com` A record | `2.57.91.91` (Hostinger) |
-| Nameservers | `hermes.dns-parking.com`, `artemis.dns-parking.com` (Hostinger) |
-| `www` | CNAME → `mkelango.com` |
-| What is served | A Hostinger **parked-domain placeholder**, marked `noindex, nofollow` |
+| `mkelango.com` A record | `2.57.91.91` — Hostinger |
+| Nameservers | `hermes.dns-parking.com`, `artemis.dns-parking.com` — Hostinger |
+| `www.mkelango.com` | CNAME → `mkelango.com` |
+| What is served today | A Hostinger **parked-domain placeholder**, marked `noindex, nofollow` |
 
-**Nothing of value is live there.** Repointing the domain replaces a placeholder page, not a
-working site. No content is at risk.
-
----
-
-## Step 1 — Connect the repository to Vercel
-
-1. Sign in at **vercel.com** with the GitHub account `mkelango`.
-2. **Add New → Project → Import** `mkelango/mkelango_portfolio_website`.
-3. Change nothing on the configuration screen. `vercel.json` already declares:
-   - Framework: none
-   - Build command: `node build.js`
-   - Output directory: `dist`
-   - Install command: none (the project has no dependencies)
-4. **Deploy.** It takes well under a minute — there is nothing to install and the build is
-   about 130 ms.
-
-You will get a `*.vercel.app` URL. Check it before touching DNS: the homepage, one programme
-page, one diagnostic (run it end to end), and `/llms.txt`.
-
-> The 57 Open Graph cards are committed to the repository on purpose. They are rendered by
-> headless Chrome, which is not available on a build server, so `og.js` must be run locally
-> and the PNGs committed. `npm run release` does that in the right order.
+**Nothing of value is live there.** Repointing replaces a placeholder, not a working site.
 
 ---
 
-## Step 2 — Point the domain at it
+## Step 1 — Point the DNS at GitHub Pages
 
-### 2a. Add the domain in Vercel
+In Hostinger: **Domains → mkelango.com → DNS / Name Servers**. Keep Hostinger's nameservers;
+only the records change.
 
-Project → **Settings → Domains** → add both:
+### Apex — replace the parking A record with GitHub's four
 
-- `mkelango.com`  ← **set this as the primary domain**
-- `www.mkelango.com` ← let Vercel redirect it to the apex
+**Delete** the existing `A` record on `@` pointing at `2.57.91.91` first. If you leave it,
+the domain will resolve to the parking page a good share of the time.
 
-The apex must be primary. Every canonical URL the site emits is `https://mkelango.com/…`
-with no `www`, so making `www` primary would put the canonical and the served host in
-disagreement on all 58 pages.
+Then add all four:
 
-Vercel will then display the exact DNS records to create. **Use the values it shows you** —
-they vary by account and region, and they have changed more than once. They will look like:
+| Type | Host | Value | TTL |
+|---|---|---|---|
+| A | `@` | `185.199.108.153` | 3600 |
+| A | `@` | `185.199.109.153` | 3600 |
+| A | `@` | `185.199.110.153` | 3600 |
+| A | `@` | `185.199.111.153` | 3600 |
 
-- an **A** record on the apex pointing at a Vercel IP
-- a **CNAME** on `www` pointing at `cname.vercel-dns.com`
+All four — they are GitHub's Pages edge servers and the redundancy is the point.
 
-### 2b. Create those records at Hostinger
+Optionally add the IPv6 equivalents as `AAAA` on `@`:
+`2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`.
 
-Sign in to Hostinger → **Domains → mkelango.com → DNS / Name Servers**.
+### `www` — replace the existing CNAME
 
-Keep Hostinger's nameservers. Then:
+The current `www` CNAME points at `mkelango.com`. **Change its value** to:
 
-1. **Delete** the existing `A` record for `@` that points at `2.57.91.91` — that is the
-   parking page, and leaving it in place means the domain will resolve to the placeholder
-   roughly half the time.
-2. **Add** the `A` record Vercel gave you, host `@`.
-3. **Replace** the `www` CNAME with the one Vercel gave you (`cname.vercel-dns.com`).
-4. Leave `MX` and any `TXT` records alone — those are email and verification, and removing
-   them will break mail.
+| Type | Host | Value | TTL |
+|---|---|---|---|
+| CNAME | `www` | `mkelango.github.io.` | 3600 |
 
-Propagation is usually minutes; allow up to a few hours. Vercel issues the TLS certificate
-automatically once the records resolve.
+That is the **GitHub account**, not the repository — no repository name, no path. GitHub
+resolves the repository from the `CNAME` file in the published artifact.
 
-> **Alternative:** you can instead move the nameservers to Vercel and let it manage DNS. It is
-> tidier long-term, but it moves *all* records — including mail. Only do that if you know what
-> is currently in the zone.
+**Do not touch `MX` or existing `TXT` records.** Those are mail and domain verification;
+removing them breaks email.
 
-### 2c. Verify
+---
+
+## Step 2 — The first deploy binds the domain
+
+The build writes `dist/CNAME` containing `mkelango.com`, derived from
+[`src/data/site.js`](src/data/site.js). When the workflow publishes, GitHub reads that file
+and sets the custom domain itself. There is nothing to type into the Pages settings.
+
+`check.js` fails the build if that `CNAME` ever stops matching the domain the canonicals and
+JSON-LD claim — the two cannot drift apart.
+
+Once DNS resolves, go to **Settings → Pages** and confirm:
+
+- the custom domain shows `mkelango.com` with a green check
+- **Enforce HTTPS** is ticked — available once the certificate is issued, usually within an
+  hour of DNS propagating
+
+### Verify
 
 ```bash
-dig +short A mkelango.com          # should be the Vercel IP, not 2.57.91.91
-dig +short CNAME www.mkelango.com  # should be cname.vercel-dns.com
+dig +short A mkelango.com          # the four 185.199.x.153 — not 2.57.91.91
+dig +short CNAME www.mkelango.com  # mkelango.github.io.
 curl -sSI https://mkelango.com | head -3
-curl -sSI https://www.mkelango.com | grep -i location   # should 301 to the apex
+curl -sSI https://www.mkelango.com | grep -i location   # 301 to the apex
 curl -sS https://mkelango.com/llms.txt | head -3
 ```
+
+---
+
+## The publishing loop, once DNS is live
+
+```
+edit → git push → GitHub Action builds + validates → mkelango.com updates
+```
+
+That is the whole of it. No dashboard, no manual deploy, roughly a minute end to end.
+
+```bash
+npm run release     # og cards → build → validate   (run before pushing)
+git add -A && git commit -m "…" && git push
+```
+
+Or, if nothing visual changed:
+
+```bash
+npm run check       # build + validate
+git add -A && git commit -m "…" && git push
+```
+
+**When to run `npm run og`:** only when a page **title or description** changes, since those
+are rendered into the social cards. It needs Chrome locally and takes about ninety seconds
+for all 57. `npm run og -- --only=home,about` re-renders a subset. The workflow refuses to
+publish if the cards go missing, so this cannot be forgotten silently.
+
+**If the Action fails, nothing publishes.** The previous version stays live. Read the run log,
+fix, push again.
+
+---
+
+## Why the site will not work before DNS is connected
+
+Every internal link is root-absolute (`/about/`, `/diagnostics/aq-score/`). From a custom
+domain at the root that is correct. From `mkelango.github.io/mkelango_portfolio_website/`
+every link resolves one level too high and 404s.
+
+That is a deliberate trade: root-absolute paths keep canonicals, sitemap, JSON-LD `@id`s,
+Open Graph URLs and the markdown twins consistent with each other. The cost is that the
+default `github.io` URL is not a usable preview. Preview locally instead:
+
+```bash
+npm run build && npm run serve      # http://localhost:4321
+```
+
+---
+
+## What GitHub Pages cannot do
+
+Pages serves static files and **cannot set response headers**. So:
+
+- The `Cache-Control` tiering and security headers in [`vercel.json`](vercel.json) and
+  [`netlify.toml`](netlify.toml) **do not apply here.** Pages sets its own caching and sends
+  HSTS once *Enforce HTTPS* is on. `X-Content-Type-Options`, `Referrer-Policy`,
+  `X-Frame-Options` and `Permissions-Policy` are simply absent.
+- `Content-Type` on the markdown twins is whatever Pages decides. They stay fetchable and
+  readable, just without an explicit `text/markdown`.
+
+Both config files are kept because they are correct and make a move to Vercel or Netlify a
+single import. They are inactive while Pages is the host. If those headers start to matter,
+that is the reason to move.
+
+Pages limits: 1 GB per site, 100 GB/month soft bandwidth. This site is about 12 MB.
 
 ---
 
@@ -102,44 +160,27 @@ curl -sS https://mkelango.com/llms.txt | head -3
 
 - [ ] **Google Search Console** — add `https://mkelango.com` as a domain property, verify by
       DNS TXT, submit `https://mkelango.com/sitemap.xml`
-- [ ] **Bing Webmaster Tools** — same, and import from Search Console to save time
+- [ ] **Bing Webmaster Tools** — same, and import from Search Console
 - [ ] **Rich Results Test** on one page of each kind: a programme (`Course`), an event
       (`BusinessEvent`), a book (`Book`), a diagnostic (`WebApplication`), an essay (`Article`)
-- [ ] **Schema Markup Validator** (validator.schema.org) on the homepage — confirm the entity
-      graph resolves with no unlinked nodes
-- [ ] **Open Graph** — run the homepage and one book page through the Facebook Sharing
-      Debugger and the X Card Validator
-- [ ] **Lighthouse / PageSpeed** against the live origin, then watch field Core Web Vitals in
-      Search Console once data accumulates
-- [ ] **Analytics** — pick something privacy-preserving. `/privacy/` currently promises no
-      cross-site tracking and no advertising pixels; Google Analytics would make that untrue.
-      Vercel Analytics or Plausible both keep the promise.
+- [ ] **Schema Markup Validator** on the homepage — confirm the entity graph resolves with no
+      unlinked nodes
+- [ ] **Open Graph** — homepage and one book page through the Facebook Sharing Debugger and
+      the X Card Validator
+- [ ] **Lighthouse / PageSpeed** against the live origin
+- [ ] **Analytics** — pick something privacy-preserving. `/privacy/` promises no cross-site
+      tracking and no advertising pixels; Google Analytics would make that untrue. Plausible
+      or Fathom keep the promise.
 - [ ] **Forms** — still unwired. Every submit shows an honest "not connected" notice rather
       than failing silently. Connect: contact, programme applications, coaching applications,
       event registration, newsletter, corrections.
-- [ ] **Payments** — Razorpay (domestic) + Stripe (international) for `/shop/`. When they go
-      live, change the shop `Offer` availability in `src/seo.js` from `PreOrder` to `InStock`.
-
----
-
-## Publishing changes after launch
-
-```bash
-npm run release     # og cards → build → validate
-git add -A && git commit -m "…" && git push
-```
-
-Vercel deploys on push to `main`. The GitHub Action runs the same validator, so a broken link,
-a duplicate title or invalid JSON-LD fails before it reaches the domain.
-
-Run `npm run og` only when a page title or description changes — it needs Chrome locally and
-takes about ninety seconds for all 57 cards. `npm run og -- --only=home,about` re-renders a
-subset.
+- [ ] **Payments** — Razorpay + Stripe for `/shop/`. When live, change the shop `Offer`
+      availability in [`src/seo.js`](src/seo.js) from `PreOrder` to `InStock`.
 
 ## One thing to change soon
 
 `BUILD_DATE` in [`src/seo.js`](src/seo.js) is a single site-wide as-at date (`2026-08-26`). It
-feeds `datePublished`, `dateModified` and the sitemap's `lastmod` on every page. That is honest
-for a launch where everything genuinely ships at once, but once you are publishing on a
-cadence it should become a per-page date — otherwise `dateModified` starts telling crawlers
-something that is not true, which is exactly the failure mode this site is built to avoid.
+feeds `datePublished`, `dateModified` and the sitemap's `lastmod` on every page. Honest for a
+launch where everything ships at once; once you publish on a cadence it needs to become a
+per-page date, or `dateModified` starts telling crawlers something untrue — exactly the
+failure this site is built to avoid.

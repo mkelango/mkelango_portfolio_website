@@ -1,0 +1,66 @@
+# Build, validate, and publish to GitHub Pages.
+#
+# The validator runs on every push and pull request; deployment only happens on
+# main. A broken link, a duplicate title, invalid JSON-LD or a CNAME that no
+# longer matches the canonicals fails the job before it reaches the domain.
+name: build & deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it half-published.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # No `npm ci` — the project has no dependencies.
+      - name: Build
+        run: node build.js
+
+      - name: Validate structure, a11y, SEO, AEO, GEO
+        run: node check.js
+
+      - name: Confirm the Open Graph cards were committed
+        run: |
+          count=$(ls dist/assets/og/*.png 2>/dev/null | wc -l)
+          echo "og cards: $count"
+          # They are rendered by headless Chrome, which is not available here.
+          # If they are missing, someone committed without running `npm run og`.
+          [ "$count" -ge 50 ] || { echo "::error::Open Graph cards missing — run 'npm run og' locally and commit assets/og/"; exit 1; }
+
+      - uses: actions/configure-pages@v5
+        if: github.ref == 'refs/heads/main'
+
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          path: dist
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

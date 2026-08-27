@@ -3,6 +3,7 @@
 **Make the impossible inevitable.**
 
 The website for M. K. Elango, built to the specification in `MKELANGO-WEBSITE-STRATEGY.md`.
+Hosted on GitHub Pages at **mkelango.com**.
 58 pages, 57 markdown twins, 57 social cards, 271 FAQs, a linked entity graph —
 zero runtime dependencies, one build command.
 
@@ -271,19 +272,26 @@ Everything above is build-time and already done. These need the live domain:
 
 ## Deploy
 
-Static output, no server requirements. `vercel.json` and `netlify.toml` are included with
-clean URLs, an explicit build command, tiered caching (immutable only for content-addressed
-files) and baseline security headers.
+**GitHub Pages**, published from `main` by
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) — build, validate, then deploy.
+Nothing is published that does not pass `check.js`.
 
-**See [DEPLOY.md](DEPLOY.md)** for the full runbook: connecting the repository to a host,
-pointing `mkelango.com` at it from Hostinger, and the post-launch verification list.
+**See [DEPLOY.md](DEPLOY.md)** for the DNS records, what Pages cannot do (response headers),
+and the post-launch verification list.
 
 ```bash
 npm run release     # og cards → build → validate
-git push            # Vercel deploys main; the GitHub Action runs the same validator
+git push            # Pages redeploys main
 ```
 
----
+The domain is declared once, in [`src/data/site.js`](src/data/site.js). Canonicals, JSON-LD
+`@id`s, Open Graph URLs, the sitemap, `robots.txt`, `llms.txt`, the markdown twins and the
+Pages `CNAME` all derive from it — and `check.js` fails the build if the `CNAME` and the
+canonicals ever disagree.
+
+`vercel.json` and `netlify.toml` are kept and are correct, but **inactive** while Pages is the
+host: Pages cannot set response headers, so their caching and security-header rules do not
+apply. They make a move to either platform a single import.
 
 ## Accessibility and performance notes
 

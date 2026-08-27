@@ -1,3 +1,5 @@
+const { site } = require('./site');
+
 /* Portfolio, Evidence Log, Ideas, Show, Shop.
    Every published figure carries a grade and an as-at date. No exceptions. */
 
@@ -53,7 +55,7 @@ const evidenceLog = [
   {
     date: '26 August 2026', type: 'Standard published',
     title: 'The A/B/C standard applies to this website, not only to the books',
-    body: 'Every figure published on mkelango.com now carries a grade and an as-at date, rendered inline and hoverable. Figures that cannot be graded are removed rather than softened. This entry exists so the standard has a start date.',
+    body: `Every figure published on ${site.domain} now carries a grade and an as-at date, rendered inline and hoverable. Figures that cannot be graded are removed rather than softened. This entry exists so the standard has a start date.`,
     grade: null
   },
   {

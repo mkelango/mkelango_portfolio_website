@@ -31,7 +31,7 @@ const events = [
     tags: 'in-person flagship founder family-business cxo',
     body: `The Summit is the only place the five altitudes are taught in sequence, in one room, in two days. It is a single track by design — there are no breakouts, because the argument does not decompose into breakouts. Everyone hears the same thing in the same order, which is the only way six hundred people leave with the same vocabulary.
 
-Day one is Horizon and Organisation: the portfolio layers, the ladder derived backwards, the gating rung, and then the twelve architectural traits with a live scoring session. Day two is Engine, Instrument and Entry: the flywheel, the mission object, and the entry method — closing with the Coherence Matrix run against your own group, in the room, on paper.
+Day one is Horizon and Organisation: the portfolio layers, the ladder derived backwards, the gating rung, and then the twelve architectural traits with a live scoring session. Day two is Engine, Instrument and Entry: the flywheel, the Reach Card, and the entry method — closing with the Coherence Matrix run against your own group, in the room, on paper.
 
 There is no keynote reel, no band, and no fists in the air. You will be given instruments and made to use them.`,
     agenda: [
@@ -39,8 +39,8 @@ There is no keynote reel, no band, and no fists in the air. You will be given in
       { t: 'Day 1 · 11:30', h: 'Deriving your ladder', d: 'Worked live, from your objective. Bring the objective.' },
       { t: 'Day 1 · 14:30', h: 'The twelve traits', d: 'The AQ instrument, scored in the room against published benchmarks.' },
       { t: 'Day 1 · 17:00', h: 'The gating rung', d: 'The one rung that makes the rest reachable. Named, funded, dated.' },
-      { t: 'Day 2 · 09:00', h: 'The powertrain', d: 'Four stages, DRIVE and CORE. Why governance is the unlock.' },
-      { t: 'Day 2 · 11:30', h: 'Read, never typed', d: 'Converting one objective into a mission, with the measure grounded.' },
+      { t: 'Day 2 · 09:00', h: 'The powertrain', d: 'Four layers, DRIVE and CORE. Why the value is in the handoffs, and why governance is the unlock.' },
+      { t: 'Day 2 · 11:30', h: 'Reach, Read, Run', d: 'Converting one objective into a Reach Card — WHY, BAR, SOURCE, TRIGGER, STOP — with the Source grounded.' },
       { t: 'Day 2 · 14:30', h: 'Entry in ninety days', d: 'The CCi method for the market you are about to enter.' },
       { t: 'Day 2 · 16:00', h: 'The Coherence Matrix', d: 'Your own group, scored, on paper, before you leave the room.' }
     ]

@@ -62,6 +62,7 @@ function accentFor(p) {
     'show': { c: '#5B8DEF', k: 'THE INEVITABLE' },
     'evidence': { c: '#B4472E', k: 'THE EVIDENCE LOG' },
     'ta': { c: '#8E7130', k: 'தமிழ்' },
+    'knowledge-investor': { c: '#C8A24A', k: 'KNOWLEDGE INVESTOR' },
     'newsletter': { c: '#C8A24A', k: 'THE INEVITABLE, WEEKLY' },
     'explore': { c: '#2FA592', k: 'EXPLORE' },
     'books': { c: '#C8A24A', k: 'BOOKS' },

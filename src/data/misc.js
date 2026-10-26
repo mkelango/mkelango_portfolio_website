@@ -53,6 +53,24 @@ const evidenceStandard = [
 
 const evidenceLog = [
   {
+    date: '26 October 2026', type: 'Page added',
+    title: 'The Knowledge Investor page, nooru.ai and knowledgeinvestor.org',
+    body: 'A new page sets out the knowledge investor idea: backing early companies with tested knowledge rather than capital, in one of three roles — Knowledge Advisor, Knowledge Partner or Lead Knowledge Investor — with a goal of one hundred AI startups listed on nooru.ai. **No company count, name or term is stated on this site until it exists.** knowledgeinvestor.org is registered but not yet live, so it is shown without a link. Neither domain is added to the four ventures counted on this site. The page takes the Tamil section’s place in the Explore menu; the Tamil section stays live at /ta/.',
+    grade: null
+  },
+  {
+    date: '26 October 2026', type: 'Title changed',
+    title: 'goal1 is now Reach, Read, Run — and is marked forthcoming',
+    body: 'The instrument-layer book was published on this site as *goal1* until 26 October 2026. The method began under that name and was drafted as *Trace, Threshold, Trigger*; both named the machinery of measurement rather than what a leader does. It is now *Reach, Read, Run*, and the framework changed with the name: the mission\'s four fields — Intent, Measure, Level, Route — became the Reach Card\'s five — WHY, BAR, SOURCE, TRIGGER, STOP — with three gates and five speeds. The book was listed as available; it is now marked **forthcoming** until its ISBN is issued, and the boxed set no longer promises it in the box. The former URLs redirect and are marked noindex rather than being deleted.',
+    grade: null
+  },
+  {
+    date: '26 October 2026', type: 'New edition',
+    title: 'The AI Flywheel, second edition — the Learning Edition',
+    body: 'The second edition carries ISBN 978-81-687762-3-4, with its text closed on 23 October 2026. It widens the audience from organisations to anyone learning AI, and the site now describes it that way: four **layers** that know, make, do and move, rather than four stages; DRIVE in three modes — Learn, Research, Build; and CORE as four questions any citizen can ask. Prices, cohort sizes and benchmarks attached to the Flywheel programme and instrument are unchanged.',
+    grade: null
+  },
+  {
     date: '27 August 2026', type: 'Title changed',
     title: 'Book six is now The Constitution Engine, not The Constitution Company',
     body: 'The sixth book was published on this site as *The Constitution Company* from launch until 27 August 2026. It has been retitled. The old name described what a company **is**; every other book in the stack names a mechanism a reader can run. The framework it carries — three Locks, three Loops, and the Cost Curve of Commitment — did not exist under the old title, which is the clearest evidence that the title was the problem. The former URL redirects and is marked noindex rather than being deleted.',
@@ -97,7 +115,7 @@ const evidenceLog = [
   {
     date: '26 August 2026', type: 'Disclosure',
     title: 'Ventures deliver some programme work',
-    body: 'Flywheel installations are delivered by StartNet and goal1 instrumentation by elan1. Both are founded by M. K. Elango. The disclosure appears on each affected programme page above the pricing band, not in a footnote.',
+    body: 'Flywheel installations are delivered by StartNet and Reach, Read, Run instrumentation by elan1. Both are founded by M. K. Elango. The disclosure appears on each affected programme page above the pricing band, not in a footnote.',
     grade: null
   }
 ];
@@ -129,8 +147,9 @@ The stopping conversation is the whole thing. A board that has never stopped any
   },
   {
     slug: 'the-quarterly-ritual-is-a-choice',
-    date: '19 August 2026', layer: 'Truth', book: 'goal1',
+    date: '19 August 2026', layer: 'Truth', book: 'rrr',
     title: 'The quarterly ritual is a choice',
+    note: 'A note added on 26 October 2026. This essay was written while the book was called <em>goal1</em>, and it is left as published. The method is now <em>Reach, Read, Run</em>: the mission’s four fields became the Reach Card’s five — WHY, BAR, SOURCE, TRIGGER, STOP — and the three questions are now asked of the goal itself: Is it true now? If not, why not? What happens next?',
     dek: 'For fifty years the reason your goals were typed instead of computed was that computing them was impossible. That constraint is gone.',
     read: '7 min',
     body: `Everyone who has run OKRs knows the five failure modes. The sandbagged target, set low enough to be certain. The vanity metric, chosen because it only goes up. The orphan objective, owned by nobody by the second month. The quarterly lie, told on a Friday afternoon. And the grading conversation, which is not a grading conversation at all but a negotiation with the person who will decide your bonus.
@@ -187,6 +206,7 @@ And if it did not move, publish that internally. An organisation that cannot rep
     slug: 'own-the-road-rent-the-car',
     date: '5 August 2026', layer: 'Compounding', book: 'flywheel',
     title: 'Own the road. Rent the car.',
+    note: 'A note added on 26 October 2026. This essay predates the second edition of <em>The AI Flywheel</em>, which calls the four stages four layers — Foundation knows, Generative makes, Agentic does, Physical moves — and runs DRIVE in three modes: Learn, Research and Build. The argument stands as published.',
     dek: 'When the model is rented by everyone, implementation discipline is the only moat left — and it is a better one than the model ever was.',
     read: '5 min',
     body: `Every six weeks a better model arrives, and every six weeks a certain kind of organisation resets its roadmap. This is treated as diligence. It is closer to the opposite.
@@ -254,17 +274,48 @@ const shopInstruments = [
   { name: 'The Coherence Matrix pad', line: 'A3, 25 sheets. Every asset, every mechanism, the weightings printed on the sheet.', price: '₹2,400', tag: 'Portfolio' },
   { name: 'The Ladder canvas', line: 'A2, 10 sheets. Rungs derived backwards, with the gating rung marked in brass.', price: '₹2,900', tag: 'Portfolio' },
   { name: 'The 12-Traits assessment pad', line: 'A4, 50 sheets. Five maturity levels per trait, scored by hand, benchmark printed.', price: '₹1,800', tag: 'Architecture' },
-  { name: 'The Mission card deck', line: '52 cards. Intent, Measure, Level, Route — one mission per card, written in ink.', price: '₹3,200', tag: 'Truth' },
-  { name: 'The Flywheel wheel', line: 'A2 print. Four stages, DRIVE hub, CORE rim. Marked up in the workshop, kept on the wall.', price: '₹1,600', tag: 'Compounding' },
+  { name: 'The Reach Card deck', line: '52 cards. WHY, BAR, SOURCE, TRIGGER, STOP — one Reach per card, written in ink.', price: '₹3,200', tag: 'Truth' },
+  { name: 'The Flywheel wheel', line: 'A2 print. Four layers, DRIVE hub, CORE rim. Marked up in the workshop, kept on the wall.', price: '₹1,600', tag: 'Compounding' },
   { name: 'The CCi tear-down sheet', line: 'A3, 25 sheets. Feature map on one side, five localisation axes on the other. Tamil and English.', price: '₹1,200', tag: 'Entry' }
 ];
 
 const shopDigital = [
   { name: 'The AQ Deep Report', line: 'Trait-by-trait breakdown, the full benchmark set with sources and dates, and the three moves that shift the score fastest.', price: '₹4,900', tag: 'Architecture' },
   { name: 'Flywheel implementation templates', line: 'The DRIVE pack — data gate checklist, success definition sheet, validation protocol, expansion standard.', price: '₹7,500', tag: 'Compounding' },
-  { name: 'The goal1 mission library', line: 'Forty worked missions across sales, operations, finance and product. Each with the measure’s system of record named.', price: '₹9,900', tag: 'Truth' },
+  { name: 'The Reach library', line: 'Forty worked Reaches across sales, operations, finance and product. Each with its Source — the system of record — named.', price: '₹9,900', tag: 'Truth' },
   { name: 'CCi Sprint, self-paced', line: 'The six-week sprint as a course. Tamil and English. Includes the tear-down and localisation worksheets.', price: '₹6,500', tag: 'Entry' },
   { name: 'AI Flywheel 90-Day Start, self-paced', line: 'The programme structure without the delivery. For teams who want to run it themselves.', price: '₹12,000', tag: 'Compounding' }
 ];
 
-module.exports = { portfolio, evidenceStandard, evidenceLog, ideas, showEpisodes, shopInstruments, shopDigital };
+/* ------------------------------------------------- KNOWLEDGE INVESTOR */
+/* The roles are the founder's to define; no company, count or term is stated
+   here until it exists. nooru.ai carries the companies. */
+
+const knowledgeInvestor = {
+  compare: [
+    ['What goes in', 'Capital', 'Tested methods, instruments and judgement'],
+    ['When', 'Early — before the market agrees', 'Early — before the company could afford the advice'],
+    ['What it takes on', 'The risk that the company fails', 'The same risk, and the years it costs'],
+    ['Where it shows up', 'The board table and the next round', 'Inside the work, week to week'],
+    ['What compounds', 'The money, if the company wins', 'The capability, which stays with the team'],
+    ['Terms', 'Agreed with the company', 'Agreed with the company, and disclosed']
+  ],
+  roles: [
+    { t: 'Knowledge Advisor', depth: 'The lightest commitment', c: '#2FA592', meta: ['When needed', 'Founder-led'],
+      d: 'Counsel at the decisions that matter — a framework, a diagnostic, a question asked at the right moment. The founder sets the agenda and calls when it counts.' },
+    { t: 'Knowledge Partner', depth: 'Working depth', c: '#5B8DEF', meta: ['Ongoing', 'Hands-on'],
+      d: 'One or more methods from the stack installed in the company and run alongside the team — a ladder derived backwards, an AI workflow taken into production, a goal that reads its own state.' },
+    { t: 'Lead Knowledge Investor', depth: 'The deepest commitment', c: '#C8A24A', meta: ['Long-term', 'Across the stack'],
+      d: 'The company’s principal knowledge backer — committed across every altitude of the stack, for the long run, in the decisions that set the company’s direction.' }
+  ],
+  goal: 'nooru.ai is an agentic venture studio for Tamil founders, and <span lang="ta">நூறு</span> is Tamil for one hundred. Every company I back as a knowledge investor will be listed there, with the role I hold in it. The goal is one hundred AI startups. The count on nooru.ai is the only count that matters — this page will not quote a number ahead of it.',
+  platform: 'knowledgeinvestor.org is being built as the home for the idea itself: a platform where people with tested knowledge commit it to early companies the way angels commit capital — anywhere in the world, in any field.',
+  sites: [
+    { domain: 'nooru.ai', k: 'THE HUNDRED', c: '#C8A24A', live: true, status: 'Live',
+      d: 'An agentic venture studio for Tamil founders — where the one hundred AI startups, and the role held in each, are listed.' },
+    { domain: 'knowledgeinvestor.org', k: 'THE PLATFORM', c: '#2FA592', live: false, status: 'Launching',
+      d: 'A platform for knowledge investors around the world. The domain is registered; the site is being built and will be linked here when it is live.' }
+  ]
+};
+
+module.exports = { portfolio, evidenceStandard, evidenceLog, ideas, showEpisodes, shopInstruments, shopDigital, knowledgeInvestor };

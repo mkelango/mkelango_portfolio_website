@@ -1,5 +1,5 @@
 const { site } = require('../data/site');
-const { stack } = require('../data/stack');
+const { stack, boxLine } = require('../data/stack');
 const { diagnostics } = require('../data/diagnostics');
 const { evidenceStandard } = require('../data/misc');
 const { programs } = require('../data/programs');
@@ -9,7 +9,7 @@ const md = t => t.split('\n\n').map(p =>
   `<p>${p.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>')}</p>`).join('');
 
 const MARKS = {
-  mmm: K.layersMark, flywheel: K.flywheelMark, tao: K.traitsMark, goal1: K.missionMark,
+  mmm: K.layersMark, flywheel: K.flywheelMark, tao: K.traitsMark, rrr: K.reachCardMark,
   cci: K.cciMark, constitution: K.constitutionMark
 };
 
@@ -36,6 +36,7 @@ module.exports = function book(b) {
         </div>
         <h1 class="d1 lines">${K.headLines(b.title)}</h1>
         ${b.subtitle ? `<p class="lede lede--wide rv" style="--d:.3s;margin-top:1rem;font-weight:300;color:var(--brass-ctx)">${b.subtitle}</p>` : ''}
+        ${b.edition ? `<p class="mono faint rv" style="--d:.32s;margin-top:.8rem">${b.edition.toUpperCase()}${b.isbn ? ` · ISBN ${b.isbn}` : ''}</p>` : ''}
         <p class="pull rv" style="--d:.35s;margin-top:1.5rem;font-size:clamp(1.2rem,2.1vw,1.6rem);max-width:34ch">${b.prop}</p>
 
         <div class="flex ac wrapf gap-sm rv mt-lg" style="--d:.45s">
@@ -162,7 +163,9 @@ ${diag ? `
                  <button class="btn btn--brass btn--sm btn--block" type="submit">Tell me when</button>
                ${K.honeypot()}
                </form>`
-            : `<p class="sm mute" style="margin-top:.8rem">Retail listings open when the ISBN is issued.
+            : `<p class="sm mute" style="margin-top:.8rem">${b.isbn
+                 ? `The ${b.edition ? b.edition.split(' · ')[0].toLowerCase() : 'current edition'} carries ISBN ${b.isbn}. Retail listings will be linked here once they are live.`
+                 : 'Retail listings open when the ISBN is issued.'}
                  Until then the boxed set is the way to get it, and the instrument from this book is
                  already free on this site.</p>
                <div class="grid" style="gap:.55rem;margin-top:1rem">
@@ -179,7 +182,7 @@ ${diag ? `
           <div class="card__body">
             <span class="kicker">The boxed set</span>
             <p class="card__ttl">The Elango Stack</p>
-            <p class="card__txt">Five books, one argument, one box. The sixth ships on publication.</p>
+            <p class="card__txt">${boxLine}</p>
             <div class="card__foot"><span class="mono faint">Shop</span><span class="stk__go">${K.icon.arr}</span></div>
           </div>
         </a>

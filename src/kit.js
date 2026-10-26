@@ -295,32 +295,43 @@ function cover(b, { w = 320 } = {}) {
 /* -------------------------------------------------------- FRAMEWORK MARKS */
 /* Diagrams, drawn. These replace photography throughout the site.          */
 
-/** The AI Flywheel — four stages, DRIVE hub, CORE rim. */
+/** The AI Flywheel — four layers passing a baton, DRIVE hub, CORE rim. */
 function flywheelMark(size = 460) {
   const c = size / 2, R = size * 0.40, r = size * 0.17;
-  const stages = [
-    { l: 'FOUNDATION', a: -90, c: '#C8A24A' },
-    { l: 'GENERATIVE', a: 0,   c: '#2FA592' },
-    { l: 'AGENTIC',    a: 90,  c: '#5B8DEF' },
-    { l: 'PHYSICAL',   a: 180, c: '#B4472E' }
+  const layers = [
+    { l: 'FOUNDATION', v: 'KNOW', a: -90, c: '#C8A24A' },
+    { l: 'GENERATIVE', v: 'MAKE', a: 0,   c: '#2FA592' },
+    { l: 'AGENTIC',    v: 'DO',   a: 90,  c: '#5B8DEF' },
+    { l: 'PHYSICAL',   v: 'MOVE', a: 180, c: '#B4472E' }
   ];
-  const arc = (a0, a1, rad) => {
-    const p = a => [c + rad * Math.cos(a * Math.PI / 180), c + rad * Math.sin(a * Math.PI / 180)];
+  const rad = a => a * Math.PI / 180;
+  const arc = (a0, a1, rr) => {
+    const p = a => [c + rr * Math.cos(rad(a)), c + rr * Math.sin(rad(a))];
     const [x0, y0] = p(a0), [x1, y1] = p(a1);
-    return `M ${x0} ${y0} A ${rad} ${rad} 0 0 1 ${x1} ${y1}`;
+    return `M ${x0} ${y0} A ${rr} ${rr} 0 0 1 ${x1} ${y1}`;
   };
-  return `<svg viewBox="0 0 ${size} ${size}" class="mark-fly" role="img" aria-label="The AI Flywheel: four stages around a DRIVE hub, inside a CORE rim" xmlns="http://www.w3.org/2000/svg">
+  /* The baton travels clockwise: an arrowhead at the end of each arc, on the tangent. */
+  const head = e => {
+    const px = c + R * Math.cos(rad(e)), py = c + R * Math.sin(rad(e));
+    const tx = -Math.sin(rad(e)), ty = Math.cos(rad(e)), nx = Math.cos(rad(e)), ny = Math.sin(rad(e));
+    return `${px + tx * 7},${py + ty * 7} ${px + nx * 4},${py + ny * 4} ${px - nx * 4},${py - ny * 4}`;
+  };
+  return `<svg viewBox="0 0 ${size} ${size}" class="mark-fly" role="img" aria-label="The AI Flywheel: four layers — Foundation knows, Generative makes, Agentic does, Physical moves — passing a baton clockwise round a DRIVE hub, inside a CORE rim" xmlns="http://www.w3.org/2000/svg">
     <circle cx="${c}" cy="${c}" r="${R * 1.20}" fill="none" stroke="rgba(244,242,236,.13)" stroke-width="1" stroke-dasharray="3 5"/>
-    <text x="${c}" y="${c - R * 1.20 - 9}" text-anchor="middle" fill="rgba(244,242,236,.42)" font-family="Outfit, Helvetica, Arial, sans-serif" font-size="9" letter-spacing="0.2em">CORE · THE RIM</text>
-    ${stages.map((s, i) => `
-      <path d="${arc(s.a + 6, s.a + 84, R)}" fill="none" stroke="${s.c}" stroke-width="2.5" stroke-linecap="round" opacity=".85"/>
-      <text x="${c + R * 1.13 * Math.cos((s.a + 45) * Math.PI / 180)}" y="${c + R * 1.13 * Math.sin((s.a + 45) * Math.PI / 180) + 3}"
-        text-anchor="middle" fill="${s.c}" font-family="Outfit, Helvetica, Arial, sans-serif" font-size="9" letter-spacing="0.16em" font-weight="600">${s.l}</text>
-      <circle cx="${c + R * Math.cos(s.a * Math.PI / 180)}" cy="${c + R * Math.sin(s.a * Math.PI / 180)}" r="3.5" fill="${s.c}"/>
-    `).join('')}
+    <text x="${c}" y="${c - R * 1.20 + 17}" text-anchor="middle" fill="rgba(244,242,236,.42)" font-family="Outfit, Helvetica, Arial, sans-serif" font-size="9" letter-spacing="0.2em">CORE · THE RIM</text>
+    ${layers.map(s => {
+      const lx = c + R * 1.13 * Math.cos(rad(s.a + 45)), ly = c + R * 1.13 * Math.sin(rad(s.a + 45));
+      return `
+      <path d="${arc(s.a + 6, s.a + 78, R)}" fill="none" stroke="${s.c}" stroke-width="2.5" stroke-linecap="round" opacity=".85"/>
+      <polygon points="${head(s.a + 78)}" fill="${s.c}" opacity=".85"/>
+      <text x="${lx}" y="${ly - 2}" text-anchor="middle" fill="${s.c}" font-family="Outfit, Helvetica, Arial, sans-serif" font-size="9" letter-spacing="0.16em" font-weight="600">${s.l}</text>
+      <text x="${lx}" y="${ly + 11}" text-anchor="middle" fill="rgba(244,242,236,.62)" font-family="Outfit, Helvetica, Arial, sans-serif" font-size="9" letter-spacing="0.2em">${s.v}</text>
+      <circle cx="${c + R * Math.cos(rad(s.a))}" cy="${c + R * Math.sin(rad(s.a))}" r="3.5" fill="${s.c}"/>`;
+    }).join('')}
     <circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="rgba(244,242,236,.28)" stroke-width="1"/>
-    <text x="${c}" y="${c - 4}" text-anchor="middle" fill="#F4F2EC" font-family="Outfit, Helvetica, Arial, sans-serif" font-size="12" letter-spacing="0.22em" font-weight="600">DRIVE</text>
-    <text x="${c}" y="${c + 12}" text-anchor="middle" fill="rgba(244,242,236,.45)" font-family="Outfit, Helvetica, Arial, sans-serif" font-size="7.5" letter-spacing="0.13em">THE HUB</text>
+    <text x="${c}" y="${c - 8}" text-anchor="middle" fill="#F4F2EC" font-family="Outfit, Helvetica, Arial, sans-serif" font-size="12" letter-spacing="0.22em" font-weight="600">DRIVE</text>
+    <text x="${c}" y="${c + 7}" text-anchor="middle" fill="rgba(244,242,236,.45)" font-family="Outfit, Helvetica, Arial, sans-serif" font-size="7.5" letter-spacing="0.13em">THE HUB</text>
+    <text x="${c}" y="${c + 20}" text-anchor="middle" fill="rgba(244,242,236,.36)" font-family="Outfit, Helvetica, Arial, sans-serif" font-size="6.5" letter-spacing="0.1em">LEARN · RESEARCH · BUILD</text>
     ${[0, 1, 2, 3].map(i => {
       const a = (i * 90 + 45) * Math.PI / 180;
       return `<line x1="${c + r * Math.cos(a)}" y1="${c + r * Math.sin(a)}" x2="${c + (R - 8) * Math.cos(a)}" y2="${c + (R - 8) * Math.sin(a)}" stroke="rgba(244,242,236,.16)" stroke-width="1"/>`;
@@ -353,28 +364,40 @@ function layersMark(w = 480) {
   </svg>`;
 }
 
-/** goal1 mission object — four fields. */
-function missionMark(w = 440) {
-  const h = 200;
-  const f = [
-    { l: 'INTENT',  d: 'what we are causing',        c: '#C8A24A' },
-    { l: 'MEASURE', d: 'read, never typed',          c: '#2FA592' },
-    { l: 'LEVEL',   d: 'the threshold',              c: '#5B8DEF' },
-    { l: 'ROUTE',   d: 'what happens next',          c: '#B4472E' }
+/** Reach, Read, Run — one goal, three moves, five fields, three gates. */
+function reachCardMark(w = 480) {
+  const h = 248, gap = 16, inner = 8;
+  const colW = (w - 40 - gap * 2) / 3;
+  const F = 'font-family="Outfit, Helvetica, Arial, sans-serif"';
+  const moves = [
+    { m: 'REACH', c: '#C8A24A', gate: ['GATE 1', 'Does it say why?'], fields: [
+      { l: 'WHY', d: ['what matters,', 'and what we', 'will not do'] },
+      { l: 'BAR', d: ['the line it', 'refuses to', 'fall below'] }] },
+    { m: 'READ', c: '#2FA592', gate: ['GATE 2', 'Can it say “I don’t know”?'], fields: [
+      { l: 'SOURCE', d: ['computed from systems', 'of record, never typed —', 'and able to refuse'] }] },
+    { m: 'RUN', c: '#B4472E', gate: ['GATE 3', 'Who can stop it?'], fields: [
+      { l: 'TRIGGER', d: ['who is told,', 'with what', 'proposal'] },
+      { l: 'STOP', d: ['when it ends', 'unless', 'renewed'] }] }
   ];
-  const bw = (w - 40 - 30) / 4;
-  return `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="The goal1 mission object: Intent, Measure, Level, Route" xmlns="http://www.w3.org/2000/svg">
-    <text x="20" y="26" fill="rgba(244,242,236,.42)" font-family="Outfit, Helvetica, Arial, sans-serif" font-size="9" letter-spacing="0.2em">ONE MISSION · FOUR FIELDS</text>
-    ${f.map((x, i) => {
-      const bx = 20 + i * (bw + 10);
-      return `<rect x="${bx}" y="46" width="${bw}" height="86" rx="6" fill="${x.c}" opacity=".09"/>
-      <rect x="${bx}" y="46" width="${bw}" height="2.5" rx="1" fill="${x.c}"/>
-      <text x="${bx + 11}" y="76" fill="${x.c}" font-family="Outfit, Helvetica, Arial, sans-serif" font-size="9.5" letter-spacing="0.14em" font-weight="600">${x.l}</text>
-      <text x="${bx + 11}" y="96" fill="rgba(244,242,236,.48)" font-family="Outfit, Helvetica, Arial, sans-serif" font-size="9">${x.d.split(' ').slice(0, 2).join(' ')}</text>
-      <text x="${bx + 11}" y="109" fill="rgba(244,242,236,.48)" font-family="Outfit, Helvetica, Arial, sans-serif" font-size="9">${x.d.split(' ').slice(2).join(' ')}</text>`;
+  return `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="The Reach Card from Reach, Read, Run: five fields — WHY and BAR under Reach, SOURCE under Read, TRIGGER and STOP under Run — with one gate per move" xmlns="http://www.w3.org/2000/svg">
+    <text x="20" y="24" fill="rgba(244,242,236,.42)" ${F} font-size="9" letter-spacing="0.2em">ONE GOAL · THREE MOVES · FIVE FIELDS</text>
+    ${moves.map((mv, i) => {
+      const cx = 20 + i * (colW + gap);
+      const bw = (colW - inner * (mv.fields.length - 1)) / mv.fields.length;
+      return `<text x="${cx}" y="54" fill="${mv.c}" ${F} font-size="11" letter-spacing="0.22em" font-weight="600">${mv.m}</text>
+      <line x1="${cx}" y1="62" x2="${cx + colW}" y2="62" stroke="${mv.c}" stroke-width="1" opacity=".5"/>
+      ${mv.fields.map((f, j) => {
+        const bx = cx + j * (bw + inner);
+        return `<rect x="${bx}" y="72" width="${bw}" height="86" rx="6" fill="${mv.c}" opacity=".09"/>
+        <rect x="${bx}" y="72" width="${bw}" height="2.5" rx="1" fill="${mv.c}"/>
+        <text x="${bx + 9}" y="96" fill="${mv.c}" ${F} font-size="9.5" letter-spacing="0.12em" font-weight="600">${f.l}</text>
+        ${f.d.map((t, k) => `<text x="${bx + 9}" y="${115 + k * 12}" fill="rgba(244,242,236,.5)" ${F} font-size="8">${t}</text>`).join('')}`;
+      }).join('')}
+      <text x="${cx}" y="180" fill="${mv.c}" ${F} font-size="7.5" letter-spacing="0.18em" font-weight="600">${mv.gate[0]}</text>
+      <text x="${cx}" y="193" fill="rgba(244,242,236,.62)" ${F} font-size="9">${mv.gate[1]}</text>`;
     }).join('')}
-    <line x1="20" y1="150" x2="${w - 20}" y2="150" stroke="rgba(244,242,236,.13)" stroke-width="1"/>
-    <text x="20" y="172" fill="rgba(244,242,236,.55)" font-family="Outfit, Helvetica, Arial, sans-serif" font-size="10.5" font-style="italic">The measure is read from a system of record. Never typed.</text>
+    <line x1="20" y1="210" x2="${w - 20}" y2="210" stroke="rgba(244,242,236,.13)" stroke-width="1"/>
+    <text x="20" y="232" fill="rgba(244,242,236,.55)" ${F} font-size="10.5">A person writes all five. The machine runs three — and never touches the WHY.</text>
   </svg>`;
 }
 
@@ -486,5 +509,5 @@ module.exports = {
   icon, esc, etag, figure, kicker, btn, tlink, rule, shead, crumb,
   field, fields, seats, lrow, card, railX, stackLadder, cover, headLines, time, honeypot,
   answerBlock, faqSection, factTable,
-  flywheelMark, layersMark, missionMark, traitsMark, cciMark, constitutionMark, portraitSlot, GRADE_DEF
+  flywheelMark, layersMark, reachCardMark, traitsMark, cciMark, constitutionMark, portraitSlot, GRADE_DEF
 };

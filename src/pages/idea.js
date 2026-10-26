@@ -33,7 +33,7 @@ module.exports = function idea(i) {
 <section class="band on-paper">
   <div class="wrap wrap--wide">
     <div class="artgrid">
-      <article class="prose rv" itemscope itemtype="https://schema.org/Article">${md(i.body)}</article>
+      <article class="prose rv" itemscope itemtype="https://schema.org/Article">${i.note ? `<div class="note" style="margin-bottom:1.5rem">${i.note}</div>` : ''}${md(i.body)}</article>
       <aside class="aside-sticky rv">
         <a class="card card--link" href="/books/${b.slug}/">
           <div class="card__body">

@@ -89,7 +89,7 @@ module.exports = function programsIndex() {
         ['The Flywheel Locator', '/diagnostics/flywheel-locator/', 'AI Flywheel: The 90-Day Start', '#5B8DEF'],
         ['Do You Actually Have a Moonshot?', '/diagnostics/moonshot-test/', 'The Moonshot Intensive', '#C8A24A'],
         ['The Coherence Matrix, lite', '/diagnostics/coherence-matrix/', 'The Coherence Audit', '#B4472E'],
-        ['The Three Questions', '/diagnostics/three-questions/', 'goal1 Installation', '#B4472E'],
+        ['The Three Questions', '/diagnostics/three-questions/', 'Reach, Read, Run Installation', '#B4472E'],
         ['The CCi Readiness Assessment', '/diagnostics/cci-readiness/', 'The CCi Sprint', '#8E7130']
       ].map(([t, h, p, c]) => `
         <a class="card card--link inst-card" href="${h}" style="--c:${c}">

@@ -44,7 +44,7 @@ module.exports = function press() {
         <div class="mark-box mt-sm" style="background:var(--surface)">
           <span class="mono faint">140 WORDS</span>
           <p class="body-lg" style="margin-top:.8rem">M. K. Elango is a strategist and author working with family business groups, unicorn and soonicorn founders, and large organisations across India, the Gulf and South-East Asia.</p>
-          <p class="body-lg" style="margin-top:.9rem">His work began with ten years at StartNet, where a single pattern across several hundred founders became <em>Copy, Customize, Innovate</em>. Four books followed, each answering one question at one altitude: <em>Milk, Mountain, Moonshot</em> on portfolio architecture, <em>The Accelerated Organization</em> on organisational velocity, <em>The AI Flywheel</em> on compounding AI capability, and <em>goal1</em> on computed goal systems. A sixth, <em>The Constitution Engine</em>, is in manuscript.</p>
+          <p class="body-lg" style="margin-top:.9rem">His work began with ten years at StartNet, where a single pattern across several hundred founders became <em>Copy, Customize, Innovate</em>. Four books followed, each answering one question at one altitude: <em>Milk, Mountain, Moonshot</em> on portfolio architecture, <em>The Accelerated Organization</em> on organisational velocity, <em>The AI Flywheel</em> on compounding AI capability, and <em>Reach, Read, Run</em> on computed goal systems. A sixth, <em>The Constitution Engine</em>, is in manuscript.</p>
           <p class="body-lg" style="margin-top:.9rem">He publishes an A/B/C evidence standard against every figure he prints, including on his own website, and maintains a public corrections log. He founded StartNet, elan1 and Publytics, and the independent Think TN Foundation.</p>
         </div>
 
@@ -63,7 +63,7 @@ module.exports = function press() {
         <div class="mark-box">
           <span class="kicker">Fact sheet</span>
           <div class="stats" style="margin-top:1rem;gap:1.25rem">
-            ${K.figure({ n: 5, label: 'Books complete in manuscript', g: 'A', note: 'Five manuscripts complete and held in project, verifiable on request. None yet carries an ISBN. The sixth is in draft.' })}
+            ${K.figure({ n: 5, label: 'Books complete in manuscript', g: 'A', note: 'Five manuscripts complete and held in project, verifiable on request. One carries an ISBN: The AI Flywheel, second edition, 978-81-687762-3-4. Reach, Read, Run is complete and marked forthcoming until its ISBN is issued. The sixth is in draft.' })}
             ${K.figure({ n: 4, label: 'Ventures operating', g: 'A', note: 'StartNet, elan1, Publytics and Think TN Foundation. Each a registered entity with a live property.' })}
             ${K.figure({ n: 2026, dec: 0, label: 'Year this practice was founded', g: 'A', note: 'The advisory practice under this name. The underlying operating history at StartNet runs longer.' })}
           </div>
@@ -84,16 +84,16 @@ module.exports = function press() {
 
     <div class="grid g-2" data-stagger="0.08">
       <div class="mark-box mark-box--plate">${K.layersMark(520)}<div class="mark-box__cap"><strong style="color:var(--fg)">The three layers</strong> — from <em>Milk, Mountain, Moonshot</em>. Selection runs backwards; capital runs forwards.</div></div>
-      <div class="mark-box mark-box--plate">${K.flywheelMark(400)}<div class="mark-box__cap"><strong style="color:var(--fg)">The AI Flywheel</strong> — four stages as a powertrain, DRIVE as the hub, CORE as the rim.</div></div>
+      <div class="mark-box mark-box--plate">${K.flywheelMark(400)}<div class="mark-box__cap"><strong style="color:var(--fg)">The AI Flywheel</strong> — four layers that know, make, do and move, passing a baton, with DRIVE as the hub and CORE as the rim.</div></div>
       <div class="mark-box mark-box--plate">${K.traitsMark(520)}<div class="mark-box__cap"><strong style="color:var(--fg)">Twelve architectural traits</strong> — from <em>The Accelerated Organization</em>, scored on five maturity levels.</div></div>
-      <div class="mark-box mark-box--plate">${K.missionMark(520)}<div class="mark-box__cap"><strong style="color:var(--fg)">The mission object</strong> — from <em>goal1</em>. Intent, Measure, Level, Route.</div></div>
+      <div class="mark-box mark-box--plate">${K.reachCardMark(520)}<div class="mark-box__cap"><strong style="color:var(--fg)">The Reach Card</strong> — from <em>Reach, Read, Run</em>. WHY, BAR, SOURCE, TRIGGER, STOP, with one gate per move.</div></div>
     </div>
   </div>
 </section>
 
 <section class="band on-paper">
   <div class="wrap wrap--wide">
-    ${K.shead({ k: 'Book covers', h: 'High-resolution covers.', lede: 'Available for review coverage. The sixth is marked forthcoming and must be described as unpublished.' })}
+    ${K.shead({ k: 'Book covers', h: 'High-resolution covers.', lede: 'Available for review coverage. Books marked forthcoming must be described as unpublished.' })}
     <div class="covers rv">
       ${stack.map(b => `<div class="cover-slot">${K.cover(b, { w: 240 })}
         <span class="cover-meta"><span class="mono" style="color:${b.colour}">${b.altitude}</span>

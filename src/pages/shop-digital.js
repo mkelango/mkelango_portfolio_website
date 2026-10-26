@@ -17,7 +17,7 @@ module.exports = function shopDigitalPage() {
         </h1>
       </div>
       <div class="rv" style="--d:.3s">
-        <p class="lede">The diagnostics are free and always will be. These are the layer beneath — full benchmark sets with sources, implementation packs, mission libraries, and two programmes in self-paced form.</p>
+        <p class="lede">The diagnostics are free and always will be. These are the layer beneath — full benchmark sets with sources, implementation packs, the Reach library, and two programmes in self-paced form.</p>
       </div>
     </div>
   </div>

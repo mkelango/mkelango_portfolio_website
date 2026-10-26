@@ -141,12 +141,12 @@ Answer as the organisation actually behaves, not as the policy says it should. E
     short: 'Flywheel Locator',
     book: 'flywheel',
     kicker: 'From The AI Flywheel',
-    lede: 'Mark your four stages and two layers. Leave with one sentence: we are strongest at ___ and our weakest part is ___.',
+    lede: 'Mark your four layers, the hub and the rim. Leave with one sentence: we are strongest at ___ and our weakest part is ___.',
     time: '6 questions · about 3 minutes',
-    what: 'Where your AI capability actually sits on the powertrain — and which part is holding the wheel.',
-    why: `Foundation, Generative, Agentic, Physical. Plus DRIVE — the hub — and CORE — the rim. Six readings, one sentence.
+    what: 'Where your AI capability actually sits on the powertrain — and which layer, or which handoff, is holding the wheel.',
+    why: `Foundation knows, Generative makes, Agentic does, Physical moves. Plus DRIVE — the hub — and CORE — the rim. Six readings, one sentence.
 
-The sentence is the deliverable. If you cannot say where you are strongest and where you are weakest in one line, you cannot brief a board, and you certainly cannot sequence ninety days of work.`,
+The sentence is the deliverable. If you cannot say where you are strongest and where you are weakest in one line, you cannot brief a board, and you certainly cannot sequence ninety days of work. Read your weakest reading as a handoff as well as a layer: in most AI programmes the weakest handoff matters more than the strongest layer.`,
     colour: '#5B8DEF',
     engine: {
       id: 'flywheel-locator',
@@ -157,16 +157,16 @@ The sentence is the deliverable. If you cannot say where you are strongest and w
       reportName: 'Flywheel Locator report',
       weakNote: 'The next ninety days belong to the weakest part. Everything else waits.',
       showTraits: true,
-      book: { title: 'The AI Flywheel', href: '/books/ai-flywheel/', why: 'The powertrain, DRIVE, CORE, and why the framework survives the next model release.' },
+      book: { title: 'The AI Flywheel', href: '/books/ai-flywheel/', why: 'Four layers, DRIVE in three modes, CORE as four questions — and why tools expire while layers endure.' },
       program: { title: 'AI Flywheel: The 90-Day Start', href: '/programs/ai-flywheel/', why: 'One workflow into production, measured honestly, with a named human owner.' },
       questions: [
-        { trait: 'Foundation AI', q: 'How much of your operational data is clean, connected and queryable?',
+        { trait: 'Foundation AI · KNOW', q: 'How much of your operational data is clean, connected and queryable?',
           options: lvl('Almost none', 'One domain', 'Two or three domains', 'Most domains, with known gaps', 'A governed layer everything reads from') },
-        { trait: 'Generative AI', q: 'Are any generative use cases producing measured value in production?',
-          options: lvl('No, pilots only', 'One, value unmeasured', 'One, value measured', 'Several, measured', 'Several, measured, and funding the next stage') },
-        { trait: 'Agentic AI', q: 'Do you run agents that take actions, not just produce text?',
+        { trait: 'Generative AI · MAKE', q: 'Are any generative use cases producing measured value in production?',
+          options: lvl('No, pilots only', 'One, value unmeasured', 'One, value measured', 'Several, measured', 'Several, measured, and funding the next layer') },
+        { trait: 'Agentic AI · DO', q: 'Do you run agents that take actions, not just produce text?',
           options: lvl('No', 'Prototypes only', 'One in production, tightly scoped', 'Several in production with human gates', 'Agents are an operating model with named owners') },
-        { trait: 'Physical AI', q: 'Does operational data from production systems train anything physical or embedded?',
+        { trait: 'Physical AI · MOVE', q: 'Does operational data from production systems train anything physical or embedded?',
           help: 'Answer 1 without hesitation if this is not your sector. It is not a deficiency.',
           options: lvl('Not applicable or not started', 'Exploring', 'A pilot exists', 'One production system', 'A closed loop, operating data to physical system') },
         { trait: 'DRIVE · the hub', q: 'Before a build starts, is success written down and is there a data gate?',
@@ -175,9 +175,9 @@ The sentence is the deliverable. If you cannot say where you are strongest and w
           options: lvl('It is a brake and everyone routes around it', 'A brake, formally complied with', 'Neutral — a checklist', 'An enabler on some workstreams', 'The unlock. Governance is why we can ship to regulated customers') }
       ],
       bands: [
-        { min: 0,  max: 11, title: 'The wheel is not turning', text: 'There are parts, but no powertrain — one stage’s output is not another stage’s input. That is not a failure of ambition; it is a sequencing problem, and it is the most fixable state on this instrument.' },
-        { min: 12, max: 19, title: 'Turning, slipping', text: 'Something compounds and something else leaks. Typically a strong generative layer sitting on a weak foundation, which caps how far the agentic stage can go. Name the weakest part and give it the next ninety days.' },
-        { min: 20, max: 25, title: 'Compounding', text: 'The wheel turns and each stage is feeding the next. At this reading the binding constraint usually moves from technology to governance — which is the CORE argument, and it is good news.' },
+        { min: 0,  max: 11, title: 'The wheel is not turning', text: 'There are parts, but no powertrain — no layer hands the next a baton. That is not a failure of ambition; it is a handoff problem, and it is the most fixable state on this instrument.' },
+        { min: 12, max: 19, title: 'Turning, slipping', text: 'Something compounds and something else leaks. Typically a strong generative layer sitting on a weak foundation, which caps how far the agentic layer can go. Name the weakest part and give it the next ninety days.' },
+        { min: 20, max: 25, title: 'Compounding', text: 'The wheel turns and each layer is feeding the next. At this reading the binding constraint usually moves from technology to governance — which is the CORE argument, and it is good news. Your real CORE level is your weakest pillar, not your average.' },
         { min: 26, max: 30, title: 'The road is yours', text: 'A rare reading. The engine is model-invariant, which means the next model release is a fuel swap rather than a roadmap reset. Re-score with a sceptic and then go and standardise the win.' }
       ]
     }
@@ -290,56 +290,57 @@ The full instrument runs on your entire asset inventory with published weighting
     n: '05',
     title: 'The Three Questions',
     short: 'The Three Questions',
-    book: 'goal1',
-    kicker: 'From goal1',
-    lede: 'Ask any goal you currently hold: where does the number come from, who decides when it moves, and what happens next. Almost everyone fails the third.',
+    book: 'rrr',
+    kicker: 'From Reach, Read, Run',
+    lede: 'Ask one goal you hold — the goal, not a person: Is it true now? If not, why not? What happens next? Almost everyone fails the third.',
     time: '3 questions · under 2 minutes',
-    what: 'Whether the goals you hold are grounded instruments or typed assertions.',
-    why: `Three questions, asked of one real goal you currently hold. Not a hypothetical one — pick the one on the slide.
+    what: 'Whether the goals you hold can read their own state — or are sentences waiting to be read.',
+    why: `Three questions, asked of one real goal you currently hold. Not a hypothetical one — pick the one on the slide. And do not ask a person; a person will get you an answer eventually. Ask the goal, wherever it actually lives.
 
-The third question is where systems fail. Organisations can usually say where the number comes from and who owns it. Very few can say what automatically happens when it goes off-track, which is why the answer is nearly always "a meeting, eleven days from now."`,
+Each answer is placed on the book's five speeds — Ritual, Dashboard, Read, Routed, Running. The third question is where systems fail. Very few goals can say what happens next without someone deciding to convene, which is why the answer is nearly always "a meeting, eleven days from now."`,
     colour: '#B4472E',
     engine: {
       id: 'three-questions',
-      unit: 'Grounding reading',
+      unit: 'Speed reading',
       max: 15,
       benchmark: 6,
-      benchmarkNote: 'Median across founders and chiefs of staff asked in workshop settings. Grade [C] — estimate, as at 26 August 2026.',
-      reportName: 'Mission conversion worksheet',
-      weakNote: 'If question three is your weakest, you hold an objective, not a mission.',
+      benchmarkNote: 'Median across founders and chiefs of staff asked in workshop settings, on the earlier goal1 wording of these questions; to be re-based on the book’s wording. Grade [C] — estimate, as at 26 August 2026.',
+      reportName: 'Reach Card worksheet',
+      weakNote: 'Your speed is your slowest word. If question three is your weakest, the goal can see, but it cannot act.',
       showTraits: true,
-      book: { title: 'goal1', href: '/books/goal1/', why: 'Five failure modes, one gap — and the mission object that closes it.' },
-      program: { title: 'goal1 Installation', href: '/programs/goal1/', why: '365 days, four movements, and an honest year-one scorecard.' },
+      book: { title: 'Reach, Read, Run', href: '/books/reach-read-run/', why: 'Three moves, five fields, three gates — the goal-setting method for the agentic era. Forthcoming.' },
+      program: { title: 'Reach, Read, Run Installation', href: '/programs/reach-read-run/', why: '365 days, one Reach through all three gates first, and an honest year-one scorecard.' },
       questions: [
-        { trait: 'Where does the number come from?', q: 'Pick one goal you hold today. Where does its number come from?',
-          help: 'Be exact. "The CRM" is a good answer. "Sales" is not.',
+        { trait: 'Is it true now?', q: 'Pick one goal you hold today. Ask the goal, not a person: is its number true now?',
+          help: 'Go to wherever the goal lives — the planning tool, the spreadsheet, the slide. "Someone could pull it" is not an answer.',
           options: lvl(
-            'Someone types it in a planning tool',
-            'It is assembled by hand each period from several places',
-            'It comes from one system, adjusted by a human',
-            'It is read from a system of record, with an override log',
-            'It is read from a system of record and cannot be overridden') },
-        { trait: 'Who decides when it moves?', q: 'Who has the authority to say the measure has changed?',
+            'Nobody knows until someone types it in at the end of the period',
+            'It is assembled by hand each month — prettier, still assembled',
+            'It is computed from a system of record, but nobody can say how fresh it is',
+            'It is computed continuously and states when it last computed',
+            'It is computed continuously, states its freshness, and says “I don’t know” when it cannot compute') },
+        { trait: 'If not, why not?', q: 'When the number moves the wrong way, can the goal itself say why?',
+          help: 'Not an analyst explaining it next week. The goal, now.',
           options: lvl(
-            'Whoever is presenting that week',
-            'The goal owner, unilaterally',
-            'The goal owner, with a review',
-            'A named owner under published rules',
-            'Nobody. The system reads it; humans decide the response, not the reading') },
-        { trait: 'What happens next?', q: 'When it goes off-track, what happens automatically?',
+            'No. Someone builds an explanation for the next review',
+            'An analyst can explain it, given a few days',
+            'A dashboard shows the trend, but not the cause',
+            'The movement decomposes by region, product or segment on demand',
+            'It decomposes on demand, with its definition, exclusions and denominator written on its face') },
+        { trait: 'What happens next?', q: 'When it misses its bar, what happens — without anyone deciding to convene?',
           help: 'This is the question almost everyone fails.',
           options: lvl(
-            'A meeting, eventually',
+            'Nothing until the next meeting',
             'It is flagged in the next review',
             'The owner is notified',
-            'A defined action is routed to a named owner',
-            'A routed action with a named owner and a governed approval gate') }
+            'A named person receives a specific proposal within hours',
+            'A named person receives a proposal, agents act inside gates, and someone holds the stop') }
       ],
       bands: [
-        { min: 0,  max: 5,  title: 'Typed, not computed', text: 'The goal and the work live in different systems, and between them a person types a number. Every OKR failure mode you have experienced lives in that gap — they are not five problems, they are one.' },
-        { min: 6,  max: 9,  title: 'Partly grounded', text: 'The measure has a source and an owner, which puts you ahead of most. The break is almost certainly the third question: going off-track produces a conversation rather than a routed action, so the response time is set by the calendar.' },
-        { min: 10, max: 12, title: 'Nearly a mission', text: 'Intent, Measure and Level are in place. What is missing is Route — the governed action that fires without anyone deciding to convene. Adding it is the smallest change with the largest effect in this instrument.' },
-        { min: 13, max: 15, title: 'A mission, not an objective', text: 'Read rather than typed, owned under published rules, with a governed route on the downside. The quarterly ritual is now optional for this goal. The work is repeating it for the other thirty-nine — and knowing what breaks at eight and again at forty.' }
+        { min: 0,  max: 5,  title: 'Ritual', text: 'The goal is a sentence. It was true on the day it was assembled and has been decaying since, and nothing happens when it slips until the next meeting. That is not a failure of discipline — for fifty years it was the only arrangement available. It no longer is.' },
+        { min: 6,  max: 9,  title: 'Dashboard', text: 'The numbers are assembled — prettier, still assembled — which puts you ahead of most. The break is almost certainly the third question: a missed bar produces a conversation rather than a proposal, so the response time is set by the calendar.' },
+        { min: 10, max: 12, title: 'Read', text: 'The goal computes its own state and can say why it moved. What is missing is Run — a missed bar reaching a named person with a specific proposal within hours. Writing the TRIGGER is the smallest change with the largest effect in this instrument.' },
+        { min: 13, max: 15, title: 'Routed, or running', text: 'Read rather than typed, able to say “I don’t know”, with a named person receiving a proposal when the bar is missed. The quarterly ritual is now optional for this goal. The work is repeating it for the next Reach — and knowing what breaks at eight and again at forty.' }
       ]
     }
   },

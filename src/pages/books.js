@@ -1,5 +1,5 @@
 const { site } = require('../data/site');
-const { stack } = require('../data/stack');
+const { stack, published, forthcoming, WORDS } = require('../data/stack');
 const K = require('../kit');
 
 module.exports = function booksIndex() {
@@ -59,7 +59,7 @@ module.exports = function booksIndex() {
         <p class="pull">Five books, one argument.<br><em>Read at five altitudes.</em></p>
       </div>
       <div class="rv" style="--d:.1s">
-        <p class="lede lede--wide">The boxed set collects the five published books. The sixth ships to boxed-set buyers on publication, at no additional cost.</p>
+        <p class="lede lede--wide">The boxed set collects the ${WORDS[published.length].toLowerCase()} published books. ${forthcoming.length === 1 ? 'The sixth ships' : `The other ${WORDS[forthcoming.length].toLowerCase()} ship`} to boxed-set buyers on publication, at no additional cost.</p>
         <div class="flex ac wrapf gap-sm mt">
           ${K.btn('The Elango Stack — boxed set', '/shop/the-stack/', 'btn--brass btn--lg')}
           ${K.btn('The instruments', '/diagnostics/', 'btn--ghost btn--lg')}

@@ -6,7 +6,7 @@ const { events } = require('./data/events');
 const { coaching } = require('./data/coaching');
 const { diagnostics } = require('./data/diagnostics');
 const { ideas, showEpisodes, shopInstruments, shopDigital, evidenceStandard } = require('./data/misc');
-const { byId } = require('./data/stack');
+const { byId, boxLine } = require('./data/stack');
 const SEO = require('./seo');
 
 /* Breadcrumb trails, declared once, consumed by both the visible crumb and
@@ -80,7 +80,7 @@ const routes = [
 
   /* -------------------------------------------------------------- EXPLORE */
   { path: '/explore/', title: 'Explore',
-    desc: 'The free layer — six diagnostics, the essays, the show, the evidence log, and the Tamil section.',
+    desc: 'The free layer — six diagnostics, the essays, the show, the evidence log, and the Knowledge Investor.',
     render: () => P('explore')() },
 
   { path: '/diagnostics/', title: 'Diagnostics',
@@ -109,6 +109,10 @@ const routes = [
     desc: 'Published corrections and updated figures, tagged and dated. Nobody else in this category does this.',
     render: () => P('evidence')() },
 
+  { path: '/knowledge-investor/', title: 'Knowledge Investor',
+    desc: 'Angels invest capital. A knowledge investor invests knowledge — in one hundred AI startups, listed on nooru.ai.',
+    render: () => P('knowledge-investor')() },
+
   { path: '/ta/', title: 'தமிழ்',
     desc: 'Copy, Customize, Innovate in Tamil — CCi Live, the workshop archive, and the base’s home.',
     render: () => P('tamil')() },
@@ -132,15 +136,15 @@ const routes = [
   })),
 
   { path: '/shop/the-stack/', title: 'The Elango Stack — boxed set',
-    desc: 'Five books, one argument, one box. The sixth ships on publication.',
+    desc: boxLine,
     render: () => P('boxed-set')() },
 
   { path: '/shop/instruments/', title: 'Instruments',
-    desc: 'Printed workbooks and canvases — the Coherence Matrix, the Ladder, the 12-Traits pad, the Mission deck.',
+    desc: 'Printed workbooks and canvases — the Coherence Matrix, the Ladder, the 12-Traits pad, the Reach Card deck.',
     render: () => P('shop-instruments')() },
 
   { path: '/shop/digital/', title: 'Digital',
-    desc: 'Deep reports, implementation templates, mission libraries and self-paced courses.',
+    desc: 'Deep reports, implementation templates, the Reach library and self-paced courses.',
     render: () => P('shop-digital')() },
 
   /* ---------------------------------------------------------------- UTILITY */
@@ -178,6 +182,7 @@ const CRUMBS = {
   '/ideas/': crumb({ label: 'Explore', href: '/explore/' }, { label: 'Ideas' }),
   '/show/': crumb({ label: 'Explore', href: '/explore/' }, { label: 'The Inevitable' }),
   '/evidence/': crumb({ label: 'Explore', href: '/explore/' }, { label: 'The Evidence Log' }),
+  '/knowledge-investor/': crumb({ label: 'Explore', href: '/explore/' }, { label: 'Knowledge Investor' }),
   '/ta/': crumb({ label: 'Explore', href: '/explore/' }, { label: 'தமிழ்' }),
   '/newsletter/': crumb({ label: 'Explore', href: '/explore/' }, { label: 'Newsletter' }),
   '/shop/': crumb({ label: 'Shop' }),
@@ -246,7 +251,7 @@ function schemaFor(path) {
     case '/shop/digital/':
       return shopDigital.map(i => SEO.productNode(i, path));
     case '/shop/the-stack/':
-      return [SEO.productNode({ name: 'The Elango Stack — boxed set', line: 'Five books, one argument, one box. The sixth ships on publication.', price: '₹4,800', tag: 'Books' }, path)];
+      return [SEO.productNode({ name: 'The Elango Stack — boxed set', line: boxLine, price: '₹4,800', tag: 'Books' }, path)];
     case '/evidence/':
       return [{
         '@type': 'DefinedTermSet', '@id': SEO.url(path) + '#standard',
@@ -267,6 +272,13 @@ function schemaFor(path) {
             '@type': 'DefinedTerm', termCode: t.g, name: t.name, description: t.def
           }))
         }
+      }];
+
+    case '/knowledge-investor/':
+      return [{
+        '@type': 'DefinedTerm', '@id': SEO.url(path) + '#term',
+        name: 'Knowledge investor', url: SEO.url(path),
+        description: 'A person who commits a body of tested knowledge to an early-stage company — at risk and for the long run — in the way an angel investor commits capital.'
       }];
 
     case '/speaking/':

@@ -109,9 +109,14 @@ function build() {
      a canonical pointing at the new URL, a meta refresh, and a visible link for
      anyone whose browser does neither. Marked noindex so the stub never ranks.  */
   const REDIRECTS = {
-    '/books/constitution-company/': '/books/constitution-engine/'
+    '/books/constitution-company/': { to: '/books/constitution-engine/',
+      note: 'This book was retitled. <strong>The Constitution Company</strong> is now <strong>The Constitution Engine</strong>.' },
+    '/books/goal1/': { to: '/books/reach-read-run/',
+      note: 'This book was renamed. <strong>goal1</strong> is now <strong>Reach, Read, Run</strong>.' },
+    '/programs/goal1/': { to: '/programs/reach-read-run/',
+      note: 'This programme was renamed with its book. <strong>goal1 Installation</strong> is now <strong>Reach, Read, Run Installation</strong>.' }
   };
-  for (const [from, to] of Object.entries(REDIRECTS)) {
+  for (const [from, { to, note }] of Object.entries(REDIRECTS)) {
     const dir = path.join(OUT, from.replace(/^\/|\/$/g, ''));
     fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(path.join(dir, 'index.html'), `<!doctype html>
@@ -129,8 +134,7 @@ a{color:#C8A24A}</style>
 </head>
 <body>
 <main>
-  <p>This book was retitled. <strong>The Constitution Company</strong> is now
-     <strong>The Constitution Engine</strong>.</p>
+  <p>${note}</p>
   <p><a href="${to}">Continue to ${SEO.ORIGIN}${to}</a></p>
 </main>
 <script>location.replace(${JSON.stringify(to)});</script>

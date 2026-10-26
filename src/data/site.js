@@ -51,7 +51,7 @@ const nav = [
       { label: 'The Coherence Audit',         href: '/programs/coherence-audit/',         desc: '8–12 weeks · board level' },
       { label: 'The Accelerated Organization',href: '/programs/accelerated-organization/',desc: '90 days, then a 12-month track' },
       { label: 'AI Flywheel: The 90-Day Start',href:'/programs/ai-flywheel/',             desc: '90 days · one workflow in production' },
-      { label: 'goal1 Installation',          href: '/programs/goal1/',                   desc: '365 days · four movements' },
+      { label: 'Reach, Read, Run Installation',href:'/programs/reach-read-run/',          desc: '365 days · four movements' },
       { label: 'The CCi Sprint',              href: '/programs/cci-sprint/',              desc: '6 weeks · Tamil + English' }
     ]
   },
@@ -81,7 +81,7 @@ const nav = [
       { label: 'Ideas',              href: '/ideas/',       desc: 'One structural argument each. Not blog posts.' },
       { label: 'The Inevitable',     href: '/show/',        desc: 'Conversations with people who made something certain.' },
       { label: 'The Evidence Log',   href: '/evidence/',    desc: 'Published corrections, tagged and dated.' },
-      { label: '<span lang="ta">தமிழ்</span> / Tamil', href: '/ta/', desc: 'CCi content and the workshop archive.' },
+      { label: 'Knowledge Investor', href: '/knowledge-investor/', desc: 'Investing knowledge in 100 AI startups.' },
       { label: 'Newsletter',         href: '/newsletter/',  desc: 'One structural idea, every Tuesday.' }
     ]
   },
@@ -125,7 +125,7 @@ const footerCols = [
       { label: 'Milk, Mountain, Moonshot',   href: '/books/milk-mountain-moonshot/' },
       { label: 'The Accelerated Organization',href:'/books/accelerated-organization/' },
       { label: 'The AI Flywheel',            href: '/books/ai-flywheel/' },
-      { label: 'goal1',                      href: '/books/goal1/' },
+      { label: 'Reach, Read, Run',           href: '/books/reach-read-run/' },
       { label: 'Copy, Customize, Innovate',  href: '/books/cci/' },
       { label: 'The Constitution Engine',    href: '/books/constitution-engine/' }
     ]
@@ -135,6 +135,7 @@ const footerCols = [
     links: [
       { label: 'The Evidence Log',  href: '/evidence/' },
       { label: 'Ideas',             href: '/ideas/' },
+      { label: 'Knowledge Investor', href: '/knowledge-investor/' },
       { label: '<span lang="ta">தமிழ்</span> / Tamil', href: '/ta/' },
       { label: 'Media enquiries',   href: '/press/' },
       { label: 'Contact',           href: '/contact/' }

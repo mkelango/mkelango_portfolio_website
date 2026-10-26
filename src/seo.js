@@ -216,13 +216,16 @@ function bookNode(b) {
       url: url('/the-stack/')
     },
     image: ogImageURL('/books/' + b.slug + '/'),
+    alternativeHeadline: b.subtitle,
     workExample: b.status === 'available' ? {
       '@type': 'Book',
       bookFormat: 'https://schema.org/Paperback',
+      bookEdition: b.edition,
+      isbn: b.isbn,
       inLanguage: 'en'
     } : undefined
   };
-  /* No ISBN is invented. It is added when one is issued. */
+  /* No ISBN is invented. It is added when one is issued — see stack.js. */
   if (b.status === 'forthcoming') node.datePublished = undefined;
   return prune(node);
 }

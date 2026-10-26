@@ -96,81 +96,112 @@ I took twelve of them and scored real organisations against them on five maturit
     layerShort: 'Compounding',
     horizon: '90 days – 5 years',
     title: 'The AI Flywheel',
+    subtitle: 'How Anyone Can Learn, Research and Build With AI — From Models to Machines',
+    edition: 'Second Edition · The Learning Edition',
+    isbn: '978-81-687762-3-4',
     titleLines: ['The', 'AI', 'Flywheel'],
     colour: '#5B8DEF',
     question: 'What compounds, and how do you turn it?',
-    prop: 'Own the road. Rent the car.',
-    makes: 'Compounding advantage — because implementation discipline is the only moat left when the model is rented.',
+    prop: 'Tools expire. Layers endure.',
+    makes: 'Compounding capability — because the value lives in the handoffs between layers, and a person who can see the layers is never reset by the next tool.',
     status: 'available',
     coverWords: ['THE', 'AI', 'FLYWHEEL'],
     coverRule: 'THE COMPOUNDING LAYER',
 
-    onePage: `Foundation AI, Generative AI, Agentic AI, Physical AI. Everyone treats these as a menu to pick from. They are not a menu — they are a <em>powertrain</em>. Generative wins fund the Foundation. A solid Foundation makes reliable Agents possible. Agents in production throw off the operational data that trains Physical systems. Round it turns, each part driving the next. Two layers make it survive contact with a real organisation: <strong>DRIVE</strong> — Diagnose, Resource, Implement, Validate, Expand — the hub that turns the wheel; and <strong>CORE</strong> — Compliance, Openness, Responsibility, Empowerment — the rim that stops it flying apart. The framework is scale-invariant and model-invariant: the team leader with one clean spreadsheet and the finance minister with sovereign compute operate the same machine, and when a better model lands in six weeks you swap the fuel, not the engine.`,
+    onePage: `Every AI product, from a chatbot to a robotaxi, is the same four layers turning together. <strong>Foundation AI</strong> knows. <strong>Generative AI</strong> makes. <strong>Agentic AI</strong> does. <strong>Physical AI</strong> moves. They are not a menu — they are a <em>powertrain</em>, and the value lives in the handoffs: a quick generative win pays for the data floor, the floor makes agents reliable, agents leave the telemetry that trains machines, and the world hands data back to the floor. <strong>DRIVE</strong> — Diagnose, Resource, Implement, Validate, Expand — is the hub that turns the wheel, in three modes: Learn, Research and Build. <strong>CORE</strong> — Compliance, Openness, Responsibility, Empowerment — is the rim: four plain questions anyone can ask of any AI, where the weakest pillar sets the ceiling. Learn the layers rather than the tools, and the next tool costs you almost nothing. Tools expire. Layers endure.`,
 
-    origin: `The same NVIDIA presentation gave me the second book. Foundation AI, Generative AI, Agentic AI, Physical AI — everyone was treating these as a menu to pick from. They are not a menu. They are a **powertrain**. Generative wins fund the Foundation. A solid Foundation makes reliable Agents possible. Agents in production throw off the operational data that trains Physical systems. Round it turns, each part driving the next.
+    origin: `In 2026 I spent my time in two kinds of rooms. One was a government school in Tamil Nadu — a blackboard, slow ceiling fans, forty students on benches built for thirty. When I finished, a girl in the second row raised her hand. "Sir, where do I start?" The other was a town hall at a global capability centre in Chennai. Afterwards a vice-president who ran a division of more than a thousand people walked me to the lift and asked the same question, almost word for word.
 
-Then I added the two things that make it survive contact with a real organisation: **DRIVE** — Diagnose, Resource, Implement, Validate, Expand — the hub that turns the wheel; and **CORE** — Compliance, Openness, Responsibility, Empowerment — the rim that keeps it from flying apart.
+They did not need two different books. They needed **one way of seeing, told at two different depths.**
 
-The point of the framework is that it is **scale-invariant and model-invariant**. And when a better model arrives in six weeks — it will — you swap the fuel, not the engine. *Own the road. Rent the car.*`,
+The first edition was a method for organisations. Then I watched learners and scholars use it, and saw that the five verbs of DRIVE do not belong to project managers. They describe how anyone gets good at anything hard. So the method now runs in three modes — Learn, Research, Build — and CORE became four questions any citizen can ask of any AI.
+
+**Capability is abundant. Understanding is scarce.** Cash is spent once. Capability compounds. Start with one layer. Take one turn. Teach one person.`,
 
     contents: [
-      'Part I · Four Stages Are a Powertrain, Not a Menu',
-      'Stage 1 · Foundation AI', 'Stage 2 · Generative AI', 'Stage 3 · Agentic AI', 'Stage 4 · Physical AI',
-      'Part II · DRIVE — the hub', 'D · Diagnose (the data gate)', 'R · Resource (neutral architecture)',
-      'I · Implement (production-grade, not demo-grade)', 'V · Validate (measured honestly)', 'E · Expand (standardise the win)',
-      'Part III · CORE — the rim', 'Part IV · Scale Invariance', 'Part V · Model Invariance',
-      'Part VI · Governance Is the Unlock, Not the Brake'
+      'Preface · Where Do I Start?', 'Prologue · The Meal That Built a State',
+      'Part One · See the Machine — four layers, one hub, one rim',
+      'Part Two · Foundation AI: The Model Studio — KNOW',
+      'Part Three · Generative AI: The Generative Studio — MAKE',
+      'Part Four · Agentic AI: The Agentic Studio — DO',
+      'Part Five · Physical AI: The Robotic Studio — MOVE',
+      'Part Six · One Engine: DRIVE and CORE',
+      'Ch. 21 · The Compounding Engine', 'Ch. 22 · DRIVE: One Method, Three Modes',
+      'Ch. 23 · CORE: The Conscience of the Flywheel', 'Ch. 24 · The Invention Engine',
+      'Part Seven · A Flywheel for Every Learner — school, campus and research, career, venture',
+      'Part Eight · The Literacy Dividend',
+      'Epilogue · Make the Impossible Inevitable',
+      'Appendix A · The Flywheel Canvas', 'Appendix B · Reconstruction: A State That Learns'
     ],
 
     situations: [
       { s: 'You have an AI budget and eleven pilots and nothing compounding.',  to: '/programs/ai-flywheel/', t: 'AI Flywheel: The 90-Day Start' },
       { s: 'Every model release resets your roadmap.',                          to: '/diagnostics/flywheel-locator/', t: 'The Flywheel Locator' },
-      { s: 'You run an institution and governance is being used as a brake.',   to: '/contact/', t: 'Institutional advisory' }
+      { s: 'You run a school, a campus or a state programme and need AI literacy that compounds.', to: '/contact/', t: 'Institutional advisory' }
     ],
-    instrument: 'flywheel-locator'
+    instrument: 'flywheel-locator',
+    note: 'The second edition is the Learning Edition: one wheel, told at four depths — Spark for ages 11 to 16, Build for college students, Deep for researchers, Lead for leaders and founders. Its five competence levels, C1 Aware to C5 Architect, are proposed, not yet tested by outside bodies.'
   },
 
   {
-    id: 'goal1',
-    slug: 'goal1',
+    id: 'rrr',
+    slug: 'reach-read-run',
     altitude: 'INSTRUMENT',
     layer: 'The Truth Layer',
     layerShort: 'Truth',
     horizon: 'continuous',
-    title: 'goal1',
-    titleLines: ['goal1'],
+    title: 'Reach, Read, Run',
+    subtitle: 'How to Set Goals Bigger Than Your Headcount — and Run Them at the Speed of AI',
+    titleLines: ['Reach,', 'Read,', 'Run'],
     colour: '#B4472E',
-    question: 'How do you know, truthfully, if it is working?',
-    prop: 'In OKR, the goal and the work live in different systems. Every failure mode follows from that one gap.',
-    makes: 'Truth — because a grounded measure cannot be negotiated.',
-    status: 'available',
-    coverWords: ['goal1'],
-    coverRule: 'THE TRUTH LAYER',
-    lowercase: true,
+    question: 'How far can you reach, what is true right now, and what runs next?',
+    prop: 'Reach like a founder. Read like an auditor. Run like a machine.',
+    makes: 'Truth at machine speed — goals bigger than your headcount, numbers that can say “I don’t know”, and a named person who can always stop what happens next.',
+    status: 'forthcoming',
+    coverWords: ['REACH', 'READ', 'RUN'],
+    coverRule: 'THE TRUTH LAYER · FORTHCOMING',
 
-    onePage: `Five failure modes recur in every OKR system ever run: the sandbagged target, the vanity metric, the orphan objective, the quarterly lie, and the grading conversation that is really a negotiation. Companies attack them as five problems. They are one problem. <strong>In OKR, the goal and the work live in different systems.</strong> The objective lives in a planning tool; the work lives in the CRM, the ledger, the repository, the ERP. Between them sits a human being who, on a Friday afternoon, types a number. For fifty years that gap was unavoidable because computing the number was impossible. That constraint is gone. goal1 replaces the objective with a <strong>mission</strong> carrying four fields — Intent, Measure, Level, Route — where the measure is <em>read from a system of record, never typed</em>, and going off-track triggers a routed action with a named owner and a governed approval, not a meeting eleven days from now.`,
+    onePage: `For fifty years every goal was quietly sized to the payroll, checked once a quarter, and acted on at the next meeting. Those are three ceilings — on ambition, on truth and on action — and they are lifting. <strong>Reach</strong> is a goal bigger than your headcount, written so a person or a machine can act on it. <strong>Read</strong> is the goal computing its own state from the systems where the work happens, and refusing to answer when it cannot. <strong>Run</strong> is what happens next: a missed bar reaching a named person within hours, agents working inside limits, and a human who can always stop it. Each goal is one <strong>Reach Card</strong> with five fields — WHY, BAR, SOURCE, TRIGGER, STOP. A person writes all five; the machine runs three, and <em>never touches the WHY</em>. Three gates keep it honest: Does it say why? Can it say “I don’t know”? Who can stop it?`,
 
-    origin: `I have run OKRs. So has everyone reading this. And the five failure modes are always the same five — the sandbagged target, the vanity metric, the orphan objective, the quarterly lie, and the grading conversation that is really a negotiation. Companies attack them as five problems. They are one problem.
+    origin: `I owe you a note on the name before the book starts.
 
-**In OKR, the goal and the work live in different systems.** The objective lives in a planning tool. The work lives in the CRM, the ledger, the repository, the ERP. Between them sits a human being who, on a Friday afternoon, types a number. Every failure mode lives in that gap.
+This method began as a book called *goal1*, and was then drafted under the working title *Trace, Threshold, Trigger*. Both names described the machinery of measurement rather than what a leader actually does. A leader stretches for something. A leader finds out what is true. A leader makes something happen. **Reach. Read. Run.** The machinery is still here. It is no longer the name.
 
-For fifty years, the reason your goals were typed instead of computed was that computing them was impossible. That constraint is gone. The numbers exist, they are connected, and the capacity to act on them is now elastic. **The quarterly ritual is a choice.**`,
+The question underneath it is not a hard one. A quarterly review, forty-one slides, customer retention at ninety-four percent, green. A new board member puts his pen down and asks: "Is that as of today?" It is ten weeks old. The real number arrives four days later, and nobody in the room experiences it as a failure — because it is normal.
+
+**In nearly every organisation on earth, a goal is a sentence.** It is written at the start of a period, discussed at the end, and in between it does nothing at all. This book is about making it something else. There is no number on its cover, because a book about numbers that cannot lie cannot open with one.`,
 
     contents: [
-      'Part I · Five Failure Modes, One Gap', 'Part II · The Mission Object',
-      'Field 1 · Intent', 'Field 2 · Measure (read, never typed)', 'Field 3 · Level', 'Field 4 · Route',
-      'Part III · Instrumentation Missions', 'Part IV · The Governance Gate',
-      'Part V · What Breaks at 8 Missions', 'Part VI · What Breaks Again at 40',
-      'Part VII · The Honest Year-One Scorecard'
+      'Introduction · Is That as of Today?',
+      'Part I · The Case',
+      'Ch. 1 · The Ritual That Outlived Its Reason', 'Ch. 2 · The Three Ceilings', 'Ch. 3 · What R³ Is, and What It Is Not',
+      'Part II · Reach',
+      'Ch. 4 · The Ration Has Lifted', 'Ch. 5 · Write the Why', 'Ch. 6 · Raise the Bar', 'Ch. 7 · From Moonshot to Monday',
+      'Gate 1 · Does it say why?',
+      'Part III · Read',
+      'Ch. 8 · The Standing Question', 'Ch. 9 · Grounded, Not Typed', 'Ch. 10 · The Source', 'Ch. 11 · Numbers That Lie Politely',
+      'Gate 2 · Can it say “I don’t know”?',
+      'Part IV · Run',
+      'Ch. 12 · Routed, Not Aligned', 'Ch. 13 · The Goal a Machine Holds', 'Ch. 14 · Who Can Stop It', 'Ch. 15 · Let It Stop',
+      'Gate 3 · Who can stop it?',
+      'Part V · The Rollout',
+      'Ch. 16 · The First Ninety Days', 'Ch. 17 · The First Year', 'Ch. 18 · Where R³ Is the Wrong Tool',
+      'Epilogue · The Next Reach',
+      'Back matter · The Reach Card, the R³ Score and the eighteen instruments'
     ],
 
     situations: [
-      { s: 'Your quarterly review is a negotiation, not a reading.',       to: '/programs/goal1/', t: 'goal1 Installation' },
-      { s: 'Nobody can say where the number in the deck came from.',       to: '/diagnostics/three-questions/', t: 'The Three Questions' },
-      { s: 'You are a chief of staff holding a planning tool nobody trusts.', to: '/programs/goal1/', t: 'Chief-of-Staff intensive' }
+      { s: 'Your quarterly review is a negotiation, not a reading.',                   to: '/programs/reach-read-run/', t: 'Reach, Read, Run Installation' },
+      { s: 'Nobody can say where the number in the deck came from.',                   to: '/diagnostics/three-questions/', t: 'The Three Questions' },
+      { s: 'You want agents acting on your goals, and nobody can say who stops them.', to: '/programs/reach-read-run/', t: 'Reach, Read, Run Installation' }
     ],
     instrument: 'three-questions',
-    note: 'A note on the number: 10x belongs in the marketing, never in the promise. goal1 does not promise you 10x. It removes the ceiling that made 2x your default.'
+    note: 'There is no number on the cover of this book — no multiple, no percentage, no transformation figure. A book about measurement honesty that opened with a fabricated multiple would have lost its argument on the front.',
+    cautions: [
+      'Read Chapter 18 first. It is the chapter about when not to do this — where work is novel, unmeasured or irreducibly qualitative — and the enterprise reader’s path through the book begins there.',
+      'The part about agents is new. Reading goals from systems of record, routing misses to named people and gating irreversible actions rest on practice watched over many years. Goal systems run partly by agents have no long-run public evidence yet, and the book says so where it matters.',
+      'It must not be used to judge people. The baseline measures the system, never the person, and no Reach is ever tied to anyone’s compensation.'
+    ]
   },
 
   {
@@ -238,7 +269,7 @@ CoirGarden did ₹8 crore in online sales in under two years applying it. That i
 
     origin: `I owe you a correction before the book starts.
 
-In an earlier draft I called this *The Constitution Company*. That was half right and half lazy. It named a **noun** when every book I have written names a **mechanism** — *Copy, Customize, Innovate* is a verb sequence, *The Accelerated Organization* is a state produced by twelve traits, *The AI Flywheel* is a machine, *Milk, Mountain, Moonshot* is three layers, *goal1* is a unit. "The Constitution Company" named a thing a company **is**, not a thing a reader can **run on Monday**. So it became *The Constitution Engine*, and fixing the title fixed the book.
+In an earlier draft I called this *The Constitution Company*. That was half right and half lazy. It named a **noun** when every book I have written names a **mechanism** — *Copy, Customize, Innovate* is a verb sequence, *The Accelerated Organization* is a state produced by twelve traits, *The AI Flywheel* is a machine, *Milk, Mountain, Moonshot* is three layers, *Reach, Read, Run* is three moves of one goal. "The Constitution Company" named a thing a company **is**, not a thing a reader can **run on Monday**. So it became *The Constitution Engine*, and fixing the title fixed the book.
 
 The subject is a company that wrote down what it would not do — a published capability ceiling, a purpose-locked legal structure, a named list of refusals — **before it had a product, customers, or anything at all to lose.** Every account treats those constraints as a tax it chose to pay and the growth as something that happened despite them. Read the mechanism rather than the narrative and the opposite is true. When the underlying capability is rented and identical for everyone, the only thing you cannot buy is the credibility of a limit you set before it cost you anything.
 
@@ -279,4 +310,13 @@ Three locks, three loops, one law — and a debit column I have not hidden.`,
 const byId = Object.fromEntries(stack.map(b => [b.id, b]));
 const bySlug = Object.fromEntries(stack.map(b => [b.slug, b]));
 
-module.exports = { stack, byId, bySlug };
+/* The boxed-set line is derived from publication status, so marking a book
+   forthcoming can never leave the shop promising it inside the box. */
+const WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six'];
+const published = stack.filter(b => b.status === 'available');
+const forthcoming = stack.filter(b => b.status === 'forthcoming');
+const boxLine = `${WORDS[published.length]} books, one argument, one box. ` +
+  (forthcoming.length === 1 ? 'The sixth ships on publication.'
+    : `The other ${WORDS[forthcoming.length].toLowerCase()} ship on publication.`);
+
+module.exports = { stack, byId, bySlug, published, forthcoming, boxLine, WORDS };

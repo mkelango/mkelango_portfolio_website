@@ -9,7 +9,7 @@ module.exports = function explore() {
     { n: '02', t: 'Ideas', h: '/ideas/', d: 'One structural argument each. Not blog posts, not listicles, not a content calendar. A fortnightly essay that has to earn its own existence.', meta: [`${ideas.length} essays`, 'Fortnightly'], c: '#C8A24A' },
     { n: '03', t: 'The Inevitable', h: '/show/', d: 'Conversations with people who made something certain — plus one recurring format: show me your portfolio and I will show you what it is actually optimising for.', meta: [`${showEpisodes.length} episodes`, 'Monthly'], c: '#5B8DEF' },
     { n: '04', t: 'The Evidence Log', h: '/evidence/', d: 'Published corrections and updated figures, tagged and dated. Nobody else in this category does this, which is exactly why it is here.', meta: [`${evidenceLog.length} entries`, 'Live'], c: '#B4472E' },
-    { n: '05', t: 'தமிழ் / Tamil', h: '/ta/', d: 'Copy, Customize, Innovate in Tamil, the CCi Live workshop archive, and the home of the base that made all of this real.', meta: ['CCi Live', 'Workshop archive'], c: '#8E7130' },
+    { n: '05', t: 'Knowledge Investor', h: '/knowledge-investor/', d: 'Angels invest capital. A knowledge investor invests knowledge — early, at risk, for the long run. The goal is one hundred AI startups, listed on nooru.ai.', meta: ['100 AI startups', 'nooru.ai'], c: '#8E7130' },
     { n: '06', t: 'The Inevitable, weekly', h: '/newsletter/', d: 'One structural idea, every Tuesday. No motivation. No news roundup. One mechanism, explained well enough to use on Monday.', meta: ['Weekly', 'Tuesdays'], c: '#C8A24A' }
   ];
 

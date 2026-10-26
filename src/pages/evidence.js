@@ -3,6 +3,9 @@ const { evidenceStandard, evidenceLog } = require('../data/misc');
 const K = require('../kit');
 const SEO = require('../seo');
 
+/* Entry bodies are written with *emphasis* and **strong**, like the essays. */
+const inline = t => t.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>');
+
 module.exports = function evidence() {
   return `
 <section class="phero on-ink">
@@ -56,7 +59,7 @@ module.exports = function evidence() {
               ${e.grade ? K.etag(e.grade, 'Grade applied to the figure in this entry.', e.date) : ''}
             </div>
             <p class="lrow__t">${e.title}</p>
-            <p class="lrow__d">${e.body}</p>
+            <p class="lrow__d">${inline(e.body)}</p>
           </div>
           <div></div>
         </div>`).join('')}

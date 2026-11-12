@@ -116,7 +116,7 @@ module.exports = function knowledgeInvestor() {
   <div class="grid-bg" aria-hidden="true"></div>
   <div class="wrap wrap--wide">
     ${K.shead({ k: 'Two sites', h: 'Where this lives.',
-      lede: 'The companies are on one. The movement will be on the other.' })}
+      lede: 'The companies are on one. The standard is on the other.' })}
     <div class="grid g-2" style="gap:clamp(1rem,2vw,1.5rem)" data-stagger="0.08">
       ${ki.sites.map(s => {
         const inner = `
@@ -131,7 +131,7 @@ module.exports = function knowledgeInvestor() {
             ${s.live ? `<span class="stk__go">${K.icon.ext}</span>` : ''}
           </div>`;
         return s.live
-          ? `<a class="prog-card card--link" href="https://${s.domain}" rel="noopener" target="_blank" style="--c:${s.c}">${inner}</a>`
+          ? `<a class="prog-card card--link" href="${s.href || `https://${s.domain}`}" rel="noopener" target="_blank" style="--c:${s.c}">${inner}</a>`
           : `<div class="prog-card" style="--c:${s.c}">${inner}</div>`;
       }).join('')}
     </div>

@@ -53,6 +53,12 @@ const evidenceStandard = [
 
 const evidenceLog = [
   {
+    date: '12 November 2026', type: 'Link added',
+    title: 'knowledgeinvestor.org is live and linked',
+    body: 'knowledgeinvestor.org is now live as the Knowledge Investor Institute, so the Knowledge Investor page links to it, no longer marks it as launching, and describes it in the Institute’s own terms rather than as a planned platform. It is still not counted among the four ventures on this site.',
+    grade: null
+  },
+  {
     date: '26 October 2026', type: 'Page added',
     title: 'The Knowledge Investor page, nooru.ai and knowledgeinvestor.org',
     body: 'A new page sets out the knowledge investor idea: backing early companies with tested knowledge rather than capital, in one of three roles — Knowledge Advisor, Knowledge Partner or Lead Knowledge Investor — with a goal of one hundred AI startups listed on nooru.ai. **No company count, name or term is stated on this site until it exists.** knowledgeinvestor.org is registered but not yet live, so it is shown without a link. Neither domain is added to the four ventures counted on this site. The page takes the Tamil section’s place in the Explore menu; the Tamil section stays live at /ta/.',
@@ -309,12 +315,12 @@ const knowledgeInvestor = {
       d: 'The company’s principal knowledge backer — committed across every altitude of the stack, for the long run, in the decisions that set the company’s direction.' }
   ],
   goal: 'nooru.ai is an agentic venture studio for Tamil founders, and <span lang="ta">நூறு</span> is Tamil for one hundred. Every company I back as a knowledge investor will be listed there, with the role I hold in it. The goal is one hundred AI startups. The count on nooru.ai is the only count that matters — this page will not quote a number ahead of it.',
-  platform: 'knowledgeinvestor.org is being built as the home for the idea itself: a platform where people with tested knowledge commit it to early companies the way angels commit capital — anywhere in the world, in any field.',
+  platform: 'knowledgeinvestor.org is home to the Knowledge Investor Institute, which carries the idea beyond one person. It is a professional standards and certification body, based in Chennai, for experts who invest verified knowledge in a company under a written mandate — for equity that vests on milestones, a fee, or both.',
   sites: [
     { domain: 'nooru.ai', k: 'THE HUNDRED', c: '#C8A24A', live: true, status: 'Live',
       d: 'An agentic venture studio for Tamil founders — where the one hundred AI startups, and the role held in each, are listed.' },
-    { domain: 'knowledgeinvestor.org', k: 'THE PLATFORM', c: '#2FA592', live: false, status: 'Launching',
-      d: 'A platform for knowledge investors around the world. The domain is registered; the site is being built and will be linked here when it is live.' }
+    { domain: 'knowledgeinvestor.org', href: 'https://www.knowledgeinvestor.org/', k: 'THE INSTITUTE', c: '#2FA592', live: true, status: 'Live',
+      d: 'The Knowledge Investor Institute — a professional standards and certification body for experts who invest knowledge in companies, for equity, a fee, or both.' }
   ]
 };
 

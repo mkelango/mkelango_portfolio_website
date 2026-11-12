@@ -939,7 +939,7 @@ module.exports = {
     title: "The Knowledge Investor: 100 AI Startups",
     description: "Angels invest capital. A knowledge investor invests knowledge — early, at risk, for the long run. M. K. Elango's goal: one hundred AI startups on nooru.ai.",
     primaryEntity: "Knowledge investor",
-    keywords: ["knowledge investor", "what is a knowledge investor", "knowledge investor vs angel investor", "AI startup advisor India", "nooru.ai", "knowledgeinvestor.org"],
+    keywords: ["knowledge investor", "what is a knowledge investor", "knowledge investor vs angel investor", "AI startup advisor India", "nooru.ai", "knowledgeinvestor.org", "Knowledge Investor Institute"],
     answer: "A knowledge investor backs an early-stage company the way an angel investor does — early, at risk, for the long run — but invests tested knowledge rather than capital. M. K. Elango invests the methods of his six books, as Knowledge Advisor, Knowledge Partner or Lead Knowledge Investor, with a goal of one hundred AI startups listed on nooru.ai.",
     faqs: [
       { q: "What is a knowledge investor?",
@@ -951,7 +951,7 @@ module.exports = {
       { q: "What is nooru.ai?",
         a: "nooru.ai is an agentic venture studio for Tamil founders; நூறு is Tamil for one hundred. It is where every company M. K. Elango backs as a knowledge investor will be listed, with the role he holds in it. The goal is one hundred AI startups, and the count on nooru.ai is the only count quoted — this site does not state a number ahead of it." },
       { q: "What is knowledgeinvestor.org?",
-        a: "The planned home of the idea itself: a platform where people with tested knowledge commit it to early companies the way angels commit capital, anywhere in the world. The domain is registered and the site is being built; mkelango.com will link to it once it is live. Neither it nor nooru.ai is counted among the four ventures listed on this site." },
+        a: "The home of the Knowledge Investor Institute, a professional standards and certification body based in Chennai for knowledge investors: experts who invest verified knowledge in a company under a written mandate, for equity that vests on milestones, a fee, or both. It is live, and mkelango.com links to it. Neither it nor nooru.ai is counted among the four ventures listed on this site." },
     ]
   },
   "/ta/": {
